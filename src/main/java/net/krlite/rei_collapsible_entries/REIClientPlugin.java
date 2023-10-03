@@ -52,6 +52,19 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
     }
 
     /**
+     * Predicates all entries that start in the given {@link Identifier}.
+     *
+     * @param leading The identifier to predicate.
+     * @return The predicate result.
+     * @param <E> The entry type.
+     */
+    private <E> Predicate<? extends EntryStack<E>> predicateLeadingIds(Identifier leading) {
+        return entryStack -> entryStack.getIdentifier() != null
+                && entryStack.getIdentifier().getNamespace().equals(leading.getNamespace())
+                && entryStack.getIdentifier().getPath().endsWith(leading.getPath());
+    }
+
+    /**
      * Predicates all entries that end in the given {@link Identifier}.
      *
      * @param trailing The identifier to predicate.
@@ -167,7 +180,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "music_discs", "carpets", "banners", "candles", "beds",
                     "signs", "hanging_signs", "leaves", "logs", "planks",
                     "stairs", "slabs", "doors", "trapdoors", "fence_gates",
-                    "boats", "walls", "fences"
+                    "boats", "walls", "fences", "trim_templates",
+                    "decorated_pot_sherds"
             }).forEach(tag -> registerCollapsibleEntryFromTag(registry, MC, tag));
 
             // Enchanted books
@@ -231,7 +245,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             }).forEach(type -> registry.group(
                     MC.id("misc", type),
                     col(MC.id("misc", type)),
-                    predicateTrailingIds(MC.id("_" + type))
+                    predicateTrailingIds(MC.id(type))
             ));
         }
 
@@ -242,9 +256,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             registry.group(
                     AD_ASTRA.id("flags"),
                     col(AD_ASTRA.id("flags")),
-                    entryStack ->
-                            AD_ASTRA.checkContains(entryStack.getIdentifier())
-                                    && entryStack.getIdentifier().getPath().startsWith("flag")
+                    predicateTrailingIds(AD_ASTRA.id("flag"))
             );
         }
 
@@ -354,6 +366,20 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     predicateIds(TC.id("slime_helmet"))
             );
 
+            // Modifier Crystals
+            registry.group(
+                    TC.id("modifier_crystals"),
+                    col(TC.id("modifier_crystals")),
+                    predicateIds(TC.id("modifier_crystal"))
+            );
+
+            // Platforms
+            registry.group(
+                    TC.id("platforms"),
+                    col(TC.id("platforms")),
+                    predicateTrailingIds(TC.id("platform"))
+            );
+
             // Casts
             Arrays.stream(new String[]{"red_sand", "sand", "gold"}).forEach(cast ->
                     registerCollapsibleEntryFromTag(registry, TC, "casts", cast)
@@ -363,7 +389,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             Arrays.stream(new String[]{
                     "cleaver", "sword", "dagger", "scythe", "kama",
                     "broad_axe", "hand_axe", "excavator", "pickadze",
-                    "mattock", "vein_hammer", "sledge_hammer", "pickaxe"
+                    "mattock", "vein_hammer", "sledge_hammer", "pickaxe",
+                    "crossbow", "longbow"
             }).forEach(tool -> registry.group(
                     TC.id("tools", tool),
                     col(TC.id("tools", tool)),
@@ -375,7 +402,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "tough_handle", "tool_handle", "tool_binding",
                     "large_plate", "round_plate", "broad_blade",
                     "small_blade", "broad_axe_head", "small_axe_head",
-                    "hammer_head", "pick_head", "repair_kit"
+                    "hammer_head", "pick_head", "repair_kit",
+                    "bow_limb", "bow_grip", "bowstring"
             }).forEach(part -> registry.group(
                     TC.id("parts", part),
                     col(TC.id("parts", part)),

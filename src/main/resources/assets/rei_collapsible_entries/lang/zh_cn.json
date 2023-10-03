@@ -1,21 +1,32 @@
 {
   "comment_tag": "标签",
 
+  "tag.c.shulker_boxes": "潜影盒",
+  "tag.c.ores"         : "矿物",
+  "tag.c.dyes"         : "染料",
   "tag.c.glass_blocks" : "玻璃方块",
   "tag.c.glass_panes"  : "玻璃板",
-  "tag.c.shulker_boxes": "潜影盒",
 
-  "tag.minecraft.carpets"    : "地毯",
-  "tag.minecraft.beds"       : "床",
-  "tag.minecraft.banners"    : "旗帜",
-  "tag.minecraft.candles"    : "蜡烛",
-  "tag.minecraft.music_discs": "唱片",
-  "tag.minecraft.leaves"     : "树叶",
-  "tag.minecraft.signs"      : "告示牌",
-  "tag.minecraft.logs"       : "原木",
-  "tag.minecraft.planks"     : "木板",
-  "tag.minecraft.stairs"     : "楼梯",
-  "tag.minecraft.slabs"      : "台阶",
+  "tag.minecraft.carpets"             : "地毯",
+  "tag.minecraft.beds"                : "床",
+  "tag.minecraft.banners"             : "旗帜",
+  "tag.minecraft.candles"             : "蜡烛",
+  "tag.minecraft.music_discs"         : "唱片",
+  "tag.minecraft.leaves"              : "树叶",
+  "tag.minecraft.signs"               : "告示牌",
+  "tag.minecraft.hanging_signs"       : "悬挂式告示牌",
+  "tag.minecraft.logs"                : "原木",
+  "tag.minecraft.planks"              : "木板",
+  "tag.minecraft.stairs"              : "楼梯",
+  "tag.minecraft.slabs"               : "台阶",
+  "tag.minecraft.doors"               : "门",
+  "tag.minecraft.trapdoors"           : "活板门",
+  "tag.minecraft.fence_gates"         : "栅栏门",
+  "tag.minecraft.boats"               : "船",
+  "tag.minecraft.walls"               : "墙",
+  "tag.minecraft.fences"              : "栅栏",
+  "tag.minecraft.trim_templates"      : "锻造模板",
+  "tag.minecraft.decorated_pot_sherds": "纹样陶片",
 
   "tag.catwalksinc.filled_paint_rolls": "§6油漆滚筒",
 
@@ -51,11 +62,23 @@
 
   "col.minecraft.fluids": "流体",
 
-  "col.minecraft.enchanted_books"  : "附魔书",
-  "col.minecraft.tipped_arrows"    : "药箭",
-  "col.minecraft.spawn_eggs"       : "刷怪蛋",
-  "col.minecraft.glazed_terracotta": "带釉陶瓦",
-  "col.minecraft.buckets"          : "流体桶",
+  "col.minecraft.enchanted_books" : "附魔书",
+  "col.minecraft.tipped_arrows"   : "药箭",
+  "col.minecraft.paintings"       : "画",
+  "col.minecraft.goat_horns"      : "山羊角",
+  "col.minecraft.suspicious_stews": "迷之炖菜",
+
+  "col.minecraft.spawn_eggs": "刷怪蛋",
+  "col.minecraft.buckets"   : "流体桶",
+
+  "col.minecraft.blocks/terracotta"       : "陶瓦",
+  "col.minecraft.blocks/glazed_terracotta": "带釉陶瓦",
+  "col.minecraft.blocks/concrete"         : "混凝土",
+  "col.minecraft.blocks/concrete_powder"  : "混凝土粉末",
+
+  "col.minecraft.misc/button"        : "按钮",
+  "col.minecraft.misc/pressure_plate": "压力板",
+  "col.minecraft.misc/banner_pattern": "旗帜图案",
 
   "col.minecraft.lingering_potions": "滞留型药水",
   "col.minecraft.splash_potions"   : "喷溅型药水",
@@ -76,7 +99,9 @@
 
   "col.tconstruct.modifiers": "强化",
 
-  "col.tconstruct.slime_helmets": "黏液头颅",
+  "col.tconstruct.slime_helmets"    : "黏液头颅",
+  "col.tconstruct.modifier_crystals": "水晶",
+  "col.tconstruct.platforms"        : "平台",
 
   "col.tconstruct.tools/cleaver"      : "劈刀",
   "col.tconstruct.tools/sword"        : "剑",
@@ -91,6 +116,8 @@
   "col.tconstruct.tools/vein_hammer"  : "矿脉锤",
   "col.tconstruct.tools/sledge_hammer": "锤",
   "col.tconstruct.tools/pickaxe"      : "镐",
+  "col.tconstruct.tools/crossbow"     : "弩",
+  "col.tconstruct.tools/longbow"      : "长弓",
 
   "col.tconstruct.parts/tough_handle"  : "坚韧手柄",
   "col.tconstruct.parts/tool_handle"   : "工具手柄",
@@ -104,6 +131,9 @@
   "col.tconstruct.parts/hammer_head"   : "锤头",
   "col.tconstruct.parts/pick_head"     : "镐头",
   "col.tconstruct.parts/repair_kit"    : "修补件",
+  "col.tconstruct.parts/bow_limb"      : "弓臂",
+  "col.tconstruct.parts/bow_grip"      : "弓把",
+  "col.tconstruct.parts/bowstring"     : "弓弦",
 
   "col.tconstruct.stations/part_builder"    : "部件制造台",
   "col.tconstruct.stations/tinker_station"  : "匠作站",
