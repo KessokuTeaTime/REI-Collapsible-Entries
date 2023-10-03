@@ -249,7 +249,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             ));
         }
 
-        // --- Ad Astra!
+        // --- Ad Astra
 
         adAstra: {
             // Flags
