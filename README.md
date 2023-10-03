@@ -25,6 +25,7 @@ You want it, don't you? **REI Collapsible Entries QOL** adds some default qualit
 - [X] Farmer's Delight
 - [X] Hephaestus (Tinkers' Construct)
 - [X] Industrial Revolution
+- [X] Item Filters
 - [X] Kibe
 - [X] Promenade
 

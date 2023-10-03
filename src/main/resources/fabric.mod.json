@@ -1,35 +1,39 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "rei_collapsible_entries",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "REI Collapsible Entries QOL",
   "description": "",
   "authors": [
     "KrLite"
   ],
   "contact": {
     "homepage": "https://github.com/KrLite",
-    "sources": "https://github.com/KrLite/Example-Mod"
+    "sources": "https://github.com/KrLite/REI-Collapsible-Entries-QOL"
   },
 
   "license": "GPL-3.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/rei_collapsible_entries/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
-    "main": [
-      "net.krlite.modid.ExampleMod"
+    "client": [
+      "net.krlite.rei_collapsible_entries.REICollapsibleEntries"
+    ],
+    "rei_client": [
+      "net.krlite.rei_collapsible_entries.REIClientPlugin"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "rei_collapsible_entries.mixins.json"
   ],
 
   "depends": {
     "fabricloader": "*",
     "fabric-api": "*",
-    "minecraft": "1.20.x"
+    "minecraft": "1.20.x",
+    "rei": "*"
   },
   "suggests": {
   }
