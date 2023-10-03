@@ -1,27 +1,58 @@
 plugins {
-	id 'fabric-loom' version '1.4-SNAPSHOT'
+	alias(libs.plugins.fabric.loom)
 	id 'maven-publish'
 }
 
-archivesBaseName = "${project.archives_base_name}-${project.minecraft_version}"
+archivesBaseName = "${project.archives_base_name}-${libs.versions.minecraft}"
 version = project.mod_version
 group = project.maven_group
 
 repositories {
+	// Quilt Mappings
+	maven { url "https://maven.quiltmc.org/repository/release" }
+
+	// REI
 	maven { url "https://maven.shedaniel.me" }
+
+	// Development
+	maven { url "https://mvn.devos.one/snapshots/" }
+	maven {
+		name = "Modrinth Maven"
+		url = uri("https://api.modrinth.com/maven")
+		content {
+			includeGroup("maven.modrinth")
+		}
+	}
+	maven {
+		name = "Curse Maven"
+		url = uri("https://cursemaven.com")
+		content {
+			includeGroup("curse.maven")
+		}
+	}
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	// Minecraft
+	minecraft(libs.minecraft)
+
+	// Mappings
+	mappings(
+			variantOf(libs.quilt.mappings) { classifier("intermediary-v2") }
+	)
+
+	// Fabric
+	modImplementation(libs.fabric.loader)
+	modImplementation(libs.fabric.api)
 
 	// REI
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
+
+	// Development
+	modRuntimeOnly libs.bundles.development
 }
 
 processResources {

@@ -112,7 +112,27 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         }
 
         tags: {
+            {
+                // Shulker boxes
+                registerCollapsibleEntryFromTag(registry, C, "shulker_boxes");
 
+                // Glass
+                registry.group(C.id("glass"),
+                        tag(C.id("glass")),
+                        entryStack -> entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass"))) ||
+                                (entryStack.getType() != VanillaEntryTypes.FLUID &&
+                                        (TC.checkContains(entryStack.getIdentifier())
+                                                || AE2.checkContains(entryStack.getIdentifier()))
+                                        && entryStack.getIdentifier().getPath().endsWith("glass"))); // Special case for glass in TC & AE2
+
+                // Glass panes
+                registry.group(C.id("glass_panes"),
+                        tag(C.id("glass_panes")),
+                        entryStack -> entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass_panes"))) ||
+                                (entryStack.getType() != VanillaEntryTypes.FLUID &&
+                                        TC.checkContains(entryStack.getIdentifier()) &&
+                                        entryStack.getIdentifier().getPath().endsWith("glass_pane"))); // Special case for glass panes in TC
+            }
         }
 
         // --- Minecraft
@@ -167,30 +187,6 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                             col(AE2.id(joinAll(type, "paint_balls"))),
                             EntryIngredients.ofItems(Arrays.stream(DYE_COLORS).map(
                                     color -> AE2.asItem(joinAll(color, type, postfix))).collect(Collectors.toList()))));
-        }
-
-        // --- C
-
-        c:
-        {
-            // Shulker boxes
-            registerCollapsibleEntryFromTag(registry, C, "shulker_boxes");
-
-            // Glass
-            registry.group(C.id("glass"),
-                    tag(C.id("glass")),
-                    entryStack -> entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass"))) ||
-                            (entryStack.getType() != VanillaEntryTypes.FLUID &&
-                                    (TC.checkContains(entryStack.getIdentifier())
-                                            || AE2.checkContains(entryStack.getIdentifier()))
-                                    && entryStack.getIdentifier().getPath().endsWith("glass"))); // Special case for glass in TC & AE2
-            // Glass panes
-            registry.group(C.id("glass_panes"),
-                    tag(C.id("glass_panes")),
-                    entryStack -> entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass_panes"))) ||
-                            (entryStack.getType() != VanillaEntryTypes.FLUID &&
-                                    TC.checkContains(entryStack.getIdentifier()) &&
-                                    entryStack.getIdentifier().getPath().endsWith("glass_pane"))); // Special case for glass panes in TC
         }
 
         // --- Catwalks LLC.

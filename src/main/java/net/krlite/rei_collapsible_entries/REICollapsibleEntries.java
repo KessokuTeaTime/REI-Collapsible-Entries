@@ -21,10 +21,10 @@ public class REICollapsibleEntries implements ClientModInitializer {
 	}
 
 	enum ModEntry {
+		C("c"),
 		MC("minecraft"),
 		AD_ASTRA("ad_astra"),
 		AE2("ae2"),
-		C("c"),
 		CATWALKS("catwalksllc"),
 		CC("computercraft"),
 		CREATE("create"),

@@ -1,0 +1,59 @@
+[versions]
+# The latest versions are available at https://lambdaurora.dev/tools/import_quilt.html
+minecraft = "1.20.1"
+quilt_mappings = "1.20.1+build.23"
+fabric_loader = "0.14.22"
+
+fabric_api = "0.89.3+1.20.1"
+
+# Development
+ad_astra = "1.15.3"
+ae2 = "15.0.12"
+catwalks_llc = "2.1.0"
+cc_tweaked = "1.108.1"
+create = "0.5.1-d-build.1161+mc1.20.1"
+farmers_delight = "1.4.2"
+hephaestus = "1.20.1-3.6.3.232"
+industrial_revolution = "1.16.5-BETA"
+item_filters = "4728208"
+kibe = "1.10.1-BETA+1.20"
+promenade = "v4.1.0"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+quilt_mappings = { module = "org.quiltmc:quilt-mappings", version.ref = "quilt_mappings" }
+
+fabric_loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric_loader" }
+fabric_api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric_api" }
+
+# Development
+ad_astra = { module = "maven.modrinth:ad-astra", version.ref = "ad_astra" }
+ae2 = { module = "maven.modrinth:ae2", version.ref = "ae2" }
+catwalks_llc = { module = "maven.modrinth:catwalks-llc", version.ref = "catwalks_llc" }
+cc_tweaked = { module = "maven.modrinth:cc-tweaked", version.ref = "cc_tweaked" }
+create = { module = "com.simibubi.create:create-fabric-1.20.1", version.ref = "create" }
+farmers_delight = { module = "maven.modrinth:farmers-delight-fabric", version.ref = "farmers_delight" }
+hephaestus = { module = "maven.modrinth:hephaestus", version.ref = "hephaestus" }
+industrial_revolution = { module = "maven.modrinth:industrial-revolution" , version.ref = "industrial_revolution" }
+item_filters = { module = "curse.maven:item-filters-309674", version.ref = "item_filters" }
+kibe = { module = "maven.modrinth:kibe", version.ref = "kibe" }
+promenade = { module = "maven.modrinth:promenade", version.ref = "promenade" }
+
+
+[bundles]
+development = [
+    "ad_astra",
+    "ae2",
+    "catwalks_llc",
+    "cc_tweaked",
+    "create",
+    "farmers_delight",
+    "hephaestus",
+    "industrial_revolution",
+    "item_filters",
+    "kibe",
+    "promenade"
+]
+
+[plugins]
+fabric_loom = { id = "fabric-loom", version = "1.3-SNAPSHOT" }

@@ -12,15 +12,17 @@ You want it, don't you? **REI Collapsible Entries QOL** adds some default qualit
 - [X] Spawn eggs
 
 ### Item Tags
+- [X] `#c:shuller_boxes`
+- [X] `#c:glass`
+- [X] `#c:glass_panes`
 
 ### Environments
 
 - [X] Vanilla Minecraft
 - [X] Ad Astra!
 - [X] Applied Energetics 2
-- [X] C
 - [X] Catwalks LLC.
-- [X] Computer Craft
+- [X] CC: Tweaked (ComputerCraft)
 - [X] Create
 - [X] Farmer's Delight
 - [X] Hephaestus (Tinkers' Construct)
