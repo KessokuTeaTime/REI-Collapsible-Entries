@@ -3,7 +3,7 @@ plugins {
 	id 'maven-publish'
 }
 
-archivesBaseName = "${project.archives_base_name}-${libs.versions.minecraft}"
+archivesBaseName = "${project.archives_base_name}-${libs.versions.minecraft.get()}"
 version = project.mod_version
 group = project.maven_group
 
@@ -13,23 +13,6 @@ repositories {
 
 	// REI
 	maven { url "https://maven.shedaniel.me" }
-
-	// Development
-	maven { url "https://mvn.devos.one/snapshots/" }
-	maven {
-		name = "Modrinth Maven"
-		url = uri("https://api.modrinth.com/maven")
-		content {
-			includeGroup("maven.modrinth")
-		}
-	}
-	maven {
-		name = "Curse Maven"
-		url = uri("https://cursemaven.com")
-		content {
-			includeGroup("curse.maven")
-		}
-	}
 }
 
 dependencies {
@@ -46,13 +29,10 @@ dependencies {
 	modImplementation(libs.fabric.api)
 
 	// REI
-	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+	modRuntimeOnly("me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}")
 
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
-
-	// Development
-	modRuntimeOnly libs.bundles.development
+	modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}")
+	modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}")
 }
 
 processResources {

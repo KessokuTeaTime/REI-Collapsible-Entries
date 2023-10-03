@@ -25,7 +25,7 @@ public class REICollapsibleEntries implements ClientModInitializer {
 		MC("minecraft"),
 		AD_ASTRA("ad_astra"),
 		AE2("ae2"),
-		CATWALKS("catwalksllc"),
+		CATWALKS("catwalksinc"),
 		CC("computercraft"),
 		CREATE("create"),
 		FARMERS_DELIGHT("farmersdelight"),
