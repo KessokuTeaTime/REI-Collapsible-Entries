@@ -1,6 +1,9 @@
 package net.krlite.rei_collapsible_entries;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.krlite.rei_collapsible_entries.client.listener.ClientCommandRegistryListener;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -18,6 +21,7 @@ public class REICollapsibleEntries implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		ClientCommandRegistrationCallback.EVENT.register(new ClientCommandRegistryListener());
 	}
 
 	enum ModEntry {

@@ -5,6 +5,7 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
@@ -153,7 +154,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                         C.id("glass_blocks"),
                         tag(C.id("glass_blocks")),
                         entryStack ->
-                                entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass")))
+                                entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass_blocks")))
                                         || (entryStack.getType() != VanillaEntryTypes.FLUID
                                         && (TC.checkContains(entryStack.getIdentifier()) || AE2.checkContains(entryStack.getIdentifier()))
                                         && entryStack.getIdentifier().getPath().endsWith("glass")) // Special case for glass in TC & AE2
@@ -181,8 +182,45 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "signs", "hanging_signs", "leaves", "logs", "planks",
                     "stairs", "slabs", "doors", "trapdoors", "fence_gates",
                     "boats", "walls", "fences", "trim_templates",
-                    "decorated_pot_sherds"
+                    "decorated_pot_sherds", "swords", "shovels", "pickaxes",
+                    "axes", "hoes", "small_flowers", "tall_flowers", "rails"
             }).forEach(tag -> registerCollapsibleEntryFromTag(registry, MC, tag));
+
+            // Tools according to materials
+            {
+                final String[] MATERIALS = new String[]{ "wooden", "stone", "golden", "iron", "diamond", "netherite" };
+                final String[] TOOLS = new String[]{ "sword", "shovel", "pickaxe", "axe", "hoe" };
+
+                Arrays.stream(MATERIALS).forEach(material -> registry.group(
+                        MC.id("tools", material),
+                        col(MC.id("tools", material)),
+                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                                && Arrays.stream(TOOLS)
+                                .map(p -> joinAll(material, p))
+                                .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
+                ));
+            }
+
+            // Armors according to materials & types
+            {
+                final String[] MATERIALS = new String[]{"leather", "chainmail", "iron", "diamond", "golden", "netherite"};
+                final String[] ARMORS = new String[]{"helmet", "chestplate", "leggings", "boots"};
+
+                Arrays.stream(MATERIALS).forEach(material -> registry.group(
+                        MC.id("armors", material),
+                        col(MC.id("armors", material)),
+                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                                && Arrays.stream(ARMORS)
+                                .map(p -> joinAll(material, p))
+                                .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
+                ));
+
+                Arrays.stream(ARMORS).forEach(type -> registry.group(
+                        MC.id("armor_types", type),
+                        col(MC.id("armor_types", type)),
+                        predicateTrailingIds(MC.id(type))
+                ));
+            }
 
             // Enchanted books
             registry.group(
@@ -205,20 +243,33 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     predicateIds(Registries.ITEM.getId(Items.PAINTING))
             );
 
-            // Goat Horns
+            // Goat horns
             registry.group(
                     MC.id("goat_horns"),
                     col(MC.id("goat_horns")),
                     predicateIds(Registries.ITEM.getId(Items.GOAT_HORN))
             );
 
-            // Goat Horns
+            // Suspicious stews
             registry.group(
                     MC.id("suspicious_stews"),
                     col(MC.id("suspicious_stews")),
                     predicateIds(Registries.ITEM.getId(Items.SUSPICIOUS_STEW))
             );
 
+            // Banner patterns
+            registry.group(
+                    MC.id("banner_patterns"),
+                    col(MC.id("banner_patterns")),
+                    predicateTrailingIds(MC.id("banner_pattern"))
+            );
+
+            // Horse armors
+            registry.group(
+                    MC.id("horse_armors"),
+                    col(MC.id("horse_armors")),
+                    predicateTrailingIds(MC.id("horse_armor"))
+            );
 
             // Potions
             Arrays.stream(new String[]{ null, "lingering", "splash" }).forEach(prefix -> registry.group(
@@ -229,8 +280,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
             // Colored blocks
             Arrays.stream(new String[]{
-                    "terracotta", "glazed_terracotta",
-                    "concrete", "concrete_powder"
+                    "terracotta", "glazed_terracotta", "concrete",
+                    "concrete_powder", "wool", "carpet"
             }).forEach(type -> registry.group(
                     MC.id("blocks", type),
                     col(MC.id("blocks", type)),
@@ -239,12 +290,50 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                             .collect(Collectors.toList()))
             ));
 
-            // Miscellaneous
+            // Corals
+            {
+                final String[] TYPES = new String[]{ "tube", "brain", "bubble", "fire", "horn" };
+                final String[] PREFIXES = new String[]{ null, "dead" };
+                final String[] POSTFIXES = new String[]{ "coral", "coral_fan", "coral_block" };
+
+                Arrays.stream(POSTFIXES).forEach(postfix -> registry.group(
+                        MC.id("blocks", postfix),
+                        col(MC.id("blocks", postfix)),
+                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                                && Arrays.stream(TYPES)
+                                .map(p -> joinAll(p, postfix))
+                                .flatMap(p -> Arrays.stream(PREFIXES)
+                                        .map(pp -> joinAll(pp, p)))
+                                .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
+                ));
+            }
+
+            // Skulls and heads
+            {
+                final String[] TYPES = new String[]{ "skull", "head" };
+
+                registry.group(
+                        MC.id("blocks", "skull_and_head"),
+                        col(MC.id("blocks", "skull_and_head")),
+                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                                && Arrays.stream(TYPES)
+                                .anyMatch(p -> entryStack.getIdentifier().getPath().endsWith(p))
+                );
+            }
+
+            // Lights
+            registry.group(
+                    MC.id("blocks", "light"),
+                    col(MC.id("blocks", "light")),
+                    predicateTrailingIds(Registries.BLOCK.getId(Blocks.LIGHT))
+            );
+
+            // Blocks
             Arrays.stream(new String[]{
-                    "button", "pressure_plate", "banner_pattern"
+                    "button", "pressure_plate", "copper", "sapling"
             }).forEach(type -> registry.group(
-                    MC.id("misc", type),
-                    col(MC.id("misc", type)),
+                    MC.id("blocks", type),
+                    col(MC.id("blocks", type)),
                     predicateTrailingIds(MC.id(type))
             ));
         }
