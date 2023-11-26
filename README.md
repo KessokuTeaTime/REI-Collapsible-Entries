@@ -6,21 +6,35 @@ You want it, don't you? **REI Collapsible Entries QOL** adds some default qualit
 
 ## Supported Entries
 
-### Item Types
+### Tagged
 
-- [X] Fluids
-- [X] Spawn eggs
-
-### Item Tags
 - [X] `#c:shulker_boxes`
 - [X] `#c:ores` 
 - [X] `#c:dyes` 
 - [X] `#c:glass_blocks`
 - [X] `#c:glass_panes`
 
-### Environments
+### Vanilla
 
-- [X] Vanilla Minecraft
+- [X] Fluids
+- [X] Spawn eggs
+- [X] Banners, banner patterns, etc.
+- [X] Tools and armors (sorting by material and type)
+- [X] Copper block variations
+- [X] Enchanted books
+- [X] Arrows
+- [X] Paintings
+- [X] Suspicious stews, potions, etc.
+- [X] Horse armors
+- [X] Terracotta, glazed terracotta, concretes, concrete powders, etc.
+- [X] Beds, wools, carpets, etc.
+- [X] Corals, coral fans, coral blocks and dead ones
+- [X] Skulls and heads
+- [X] Buttons, pressure plates, etc.
+- [X] Saplings
+
+### Modded
+
 - [X] [Ad Astra](https://modrinth.com/mod/ad-astra)
 - [X] [Applied Energetics 2](https://modrinth.com/mod/ae2)
 - [X] [Catwalks LLC.](https://modrinth.com/mod/catwalks-llc)
