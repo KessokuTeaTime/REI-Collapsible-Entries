@@ -19,7 +19,7 @@ You want it, don't you? **REI Collapsible Entries QOL** adds some default qualit
 - [X] Fluids
 - [X] Spawn eggs
 - [X] Banners, banner patterns, etc.
-- [X] Tools and armors (sorting by material and type)
+- [X] Tools and armors (sorting by both material and type)
 - [X] Copper block variations
 - [X] Enchanted books
 - [X] Arrows
