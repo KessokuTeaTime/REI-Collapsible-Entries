@@ -21,100 +21,6 @@ import static net.krlite.rei_collapsible_entries.REICollapsibleEntries.ModEntry.
 
 @SuppressWarnings("UnstableApiUsage")
 public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIClientPlugin {
-    private Text convertToTranslatableText(String prefix, Identifier identifier) {
-        return Text.translatable(prefix + "." + identifier.getNamespace() + "." + String.join(".", identifier.getPath()));
-    }
-
-    /**
-     * Joins all the given sub strings into a single string by underscores, ignoring
-     * nulls and empties.
-     * <br />
-     * <code>["sub", null, "string"] -> ["sub_string"]</code>
-     *
-     * @param subs The sub strings to join.
-     * @return The joined string.
-     */
-    private String joinAll(String... subs) {
-        if (subs.length < 1)
-            return "";
-        return Arrays.stream(subs).filter(Objects::nonNull).filter(s -> !s.isEmpty()).reduce((f, s) -> f + "_" + s)
-                .orElse(subs[0]);
-    }
-
-    /**
-     * Predicates all entries that are of the given {@link Identifier}.
-     *
-     * @param piece The identifier to predicate.
-     * @return The predicate result.
-     * @param <E> The entry type.
-     */
-    private <E> Predicate<? extends EntryStack<E>> predicateIds(Identifier piece) {
-        return entryStack -> entryStack.getIdentifier() != null && entryStack.getIdentifier().equals(piece);
-    }
-
-    /**
-     * Predicates all entries that start in the given {@link Identifier}.
-     *
-     * @param leading The identifier to predicate.
-     * @return The predicate result.
-     * @param <E> The entry type.
-     */
-    private <E> Predicate<? extends EntryStack<E>> predicateLeadingIds(Identifier leading) {
-        return entryStack -> entryStack.getIdentifier() != null
-                && entryStack.getIdentifier().getNamespace().equals(leading.getNamespace())
-                && entryStack.getIdentifier().getPath().endsWith(leading.getPath());
-    }
-
-    /**
-     * Predicates all entries that end in the given {@link Identifier}.
-     *
-     * @param trailing The identifier to predicate.
-     * @return The predicate result.
-     * @param <E> The entry type.
-     */
-    private <E> Predicate<? extends EntryStack<E>> predicateTrailingIds(Identifier trailing) {
-        return entryStack -> entryStack.getIdentifier() != null
-                && entryStack.getIdentifier().getNamespace().equals(trailing.getNamespace())
-                && entryStack.getIdentifier().getPath().endsWith(trailing.getPath());
-    }
-
-    /**
-     * Gets a {@link Text} from the given {@link Identifier}, prefixed
-     * with <code>"tag"</code>.
-     *
-     * @param identifier The identifier.
-     * @return The tagged text.
-     */
-    private Text tag(Identifier identifier) {
-        return convertToTranslatableText("tag", identifier);
-    }
-
-    /**
-     * Gets a {@link Text} from the given {@link Identifier}, prefixed
-     * with <code>"col"</code>.
-     *
-     * @param identifier The identifier.
-     * @return The coled text.
-     */
-    private Text col(Identifier identifier) {
-        return convertToTranslatableText("col", identifier);
-    }
-
-    /**
-     * Registers a collapsible entry from the given {@link net.minecraft.registry.tag.TagKey}.
-     *
-     * @param registry The registry to register the entry to.
-     * @param modEntry The mod entry to register the entry for.
-     * @param tagPaths The tag's paths.
-     */
-    private void registerCollapsibleEntryFromTag(
-            CollapsibleEntryRegistry registry,
-            REICollapsibleEntries.ModEntry modEntry, String... tagPaths
-    ) {
-        registry.group(modEntry.id(tagPaths), tag(modEntry.id(tagPaths)),
-                EntryIngredients.ofItemTag(modEntry.asItemTag(tagPaths)));
-    }
-
     private static final String[] DYE_COLORS = {
             "black", "red", "green", "brown", "blue", "purple",
             "cyan", "light_gray", "gray", "pink", "lime",
@@ -218,7 +124,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 Arrays.stream(ARMORS).forEach(type -> registry.group(
                         MC.id("armor_types", type),
                         col(MC.id("armor_types", type)),
-                        predicateTrailingIds(MC.id(type))
+                        predicateTrailing(MC.id(type))
                 ));
             }
 
@@ -226,56 +132,56 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             registry.group(
                     MC.id("enchanted_books"),
                     col(MC.id("enchanted_books")),
-                    predicateIds(Registries.ITEM.getId(Items.ENCHANTED_BOOK))
+                    predicate(Registries.ITEM.getId(Items.ENCHANTED_BOOK))
             );
 
             // Tipped arrows
             registry.group(
                     MC.id("tipped_arrows"),
                     col(MC.id("tipped_arrows")),
-                    predicateIds(Registries.ITEM.getId(Items.TIPPED_ARROW))
+                    predicate(Registries.ITEM.getId(Items.TIPPED_ARROW))
             );
 
             // Paintings
             registry.group(
                     MC.id("paintings"),
                     col(MC.id("paintings")),
-                    predicateIds(Registries.ITEM.getId(Items.PAINTING))
+                    predicate(Registries.ITEM.getId(Items.PAINTING))
             );
 
             // Goat horns
             registry.group(
                     MC.id("goat_horns"),
                     col(MC.id("goat_horns")),
-                    predicateIds(Registries.ITEM.getId(Items.GOAT_HORN))
+                    predicate(Registries.ITEM.getId(Items.GOAT_HORN))
             );
 
             // Suspicious stews
             registry.group(
                     MC.id("suspicious_stews"),
                     col(MC.id("suspicious_stews")),
-                    predicateIds(Registries.ITEM.getId(Items.SUSPICIOUS_STEW))
+                    predicate(Registries.ITEM.getId(Items.SUSPICIOUS_STEW))
             );
 
             // Banner patterns
             registry.group(
                     MC.id("banner_patterns"),
                     col(MC.id("banner_patterns")),
-                    predicateTrailingIds(MC.id("banner_pattern"))
+                    predicateTrailing(MC.id("banner_pattern"))
             );
 
             // Horse armors
             registry.group(
                     MC.id("horse_armors"),
                     col(MC.id("horse_armors")),
-                    predicateTrailingIds(MC.id("horse_armor"))
+                    predicateTrailing(MC.id("horse_armor"))
             );
 
             // Potions
             Arrays.stream(new String[]{ null, "lingering", "splash" }).forEach(prefix -> registry.group(
                     MC.id(joinAll(prefix, "potions")),
                     col(MC.id(joinAll(prefix, "potions"))),
-                    predicateIds(MC.id(joinAll(prefix, "potion")))
+                    predicate(MC.id(joinAll(prefix, "potion")))
             ));
 
             // Colored blocks
@@ -325,7 +231,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             registry.group(
                     MC.id("blocks", "light"),
                     col(MC.id("blocks", "light")),
-                    predicateTrailingIds(Registries.BLOCK.getId(Blocks.LIGHT))
+                    predicateTrailing(Registries.BLOCK.getId(Blocks.LIGHT))
             );
 
             // Blocks
@@ -334,7 +240,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             }).forEach(type -> registry.group(
                     MC.id("blocks", type),
                     col(MC.id("blocks", type)),
-                    predicateTrailingIds(MC.id(type))
+                    predicateTrailing(MC.id(type))
             ));
         }
 
@@ -345,7 +251,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             registry.group(
                     AD_ASTRA.id("flags"),
                     col(AD_ASTRA.id("flags")),
-                    predicateTrailingIds(AD_ASTRA.id("flag"))
+                    predicateTrailing(AD_ASTRA.id("flag"))
             );
         }
 
@@ -382,7 +288,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         computerCraft: {
             // Disks
-            registry.group(CC.id("disks"), col(CC.id("disks")), predicateIds(CC.id("disk")));
+            registry.group(CC.id("disks"), col(CC.id("disks")), predicate(CC.id("disk")));
             {
                 final String[] POSTFIXES = { "advanced", "normal" };
 
@@ -452,21 +358,21 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             registry.group(
                     TC.id("slime_helmets"),
                     col(TC.id("slime_helmets")),
-                    predicateIds(TC.id("slime_helmet"))
+                    predicate(TC.id("slime_helmet"))
             );
 
             // Modifier Crystals
             registry.group(
                     TC.id("modifier_crystals"),
                     col(TC.id("modifier_crystals")),
-                    predicateIds(TC.id("modifier_crystal"))
+                    predicate(TC.id("modifier_crystal"))
             );
 
             // Platforms
             registry.group(
                     TC.id("platforms"),
                     col(TC.id("platforms")),
-                    predicateTrailingIds(TC.id("platform"))
+                    predicateTrailing(TC.id("platform"))
             );
 
             // Casts
@@ -483,7 +389,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             }).forEach(tool -> registry.group(
                     TC.id("tools", tool),
                     col(TC.id("tools", tool)),
-                    predicateIds(TC.id(tool))
+                    predicate(TC.id(tool))
             ));
 
             // Parts
@@ -496,7 +402,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             }).forEach(part -> registry.group(
                     TC.id("parts", part),
                     col(TC.id("parts", part)),
-                    predicateIds(TC.id(part))
+                    predicate(TC.id(part))
             ));
 
             // Anvils
@@ -513,7 +419,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             Arrays.stream(new String[]{ "part_builder", "tinker_station", "crafting_station" }).forEach(station -> registry.group(
                     TC.id("stations", station),
                     col(TC.id("stations", station)),
-                    predicateIds(TC.id(station))
+                    predicate(TC.id(station))
             ));
 
             // Foundries & Smelteries
@@ -544,7 +450,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             registry.group(
                     TC.id("buckets", "potion"),
                     col(TC.id("buckets", "potion")),
-                    predicateIds(TC.id("potion_bucket"))
+                    predicate(TC.id("potion_bucket"))
             );
 
             // Slime grasses

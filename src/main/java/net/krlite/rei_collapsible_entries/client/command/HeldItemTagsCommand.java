@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
-public class HeldItemInfoCommand implements Command<FabricClientCommandSource> {
+public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 	@Override
 	@SuppressWarnings("all")
 	public int run(CommandContext<FabricClientCommandSource> context) {
@@ -23,9 +23,9 @@ public class HeldItemInfoCommand implements Command<FabricClientCommandSource> {
 		if (stack.isOf(Items.AIR))
 			return 0;
 
-		// Tags
 		if (stack.getItem().getRegistryEntry().streamTags().findAny().isPresent())
 			context.getSource().sendFeedback(streamTags(stack));
+		else context.getSource().sendFeedback(Text.literal("#?".formatted(Formatting.GRAY, Formatting.ITALIC)));
 
 		return SINGLE_SUCCESS;
 	}
@@ -33,7 +33,7 @@ public class HeldItemInfoCommand implements Command<FabricClientCommandSource> {
 	@SuppressWarnings("deprecation")
 	private Text streamTags(ItemStack stack) {
 		return stack.getItem().getRegistryEntry().streamTags()
-				.map(tag -> Text.translatable("command." + REICollapsibleEntries.ID + ".held_item_info.tag_prefix")
+				.map(tag -> Text.translatable("command." + REICollapsibleEntries.ID + ".held_item_tags.prefix")
 						.formatted(Formatting.GRAY, Formatting.ITALIC)
 						.append(Text.literal(tag.id().toString())
 								.styled(style -> style
@@ -47,6 +47,6 @@ public class HeldItemInfoCommand implements Command<FabricClientCommandSource> {
 												tag.id().toString())
 										))
 						))
-				.reduce((a, b) -> a.append(" ").append(b)).orElse(Text.empty());
+				.reduce((a, b) -> a.append(", ").append(b)).orElse(Text.empty());
 	}
 }

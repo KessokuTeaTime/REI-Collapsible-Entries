@@ -203,5 +203,5 @@
 
 
 
-  "command.rei_collapsible_entries.held_item_info.tag_prefix": "#"
+  "command.rei_collapsible_entries.held_item_tags.prefix": "#"
 }
