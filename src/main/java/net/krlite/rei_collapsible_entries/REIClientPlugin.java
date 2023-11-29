@@ -1,23 +1,19 @@
 package net.krlite.rei_collapsible_entries;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
-import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
-import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static net.krlite.rei_collapsible_entries.REICollapsibleEntries.ModEntry.*;
+import static net.krlite.rei_collapsible_entries.ModEntry.*;
 
 @SuppressWarnings("UnstableApiUsage")
 public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIClientPlugin {
@@ -90,7 +86,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "boats", "walls", "fences", "trim_templates",
                     "decorated_pot_sherds", "swords", "shovels", "pickaxes",
                     "axes", "hoes", "small_flowers", "tall_flowers", "rails"
-            }).forEach(tag -> registerCollapsibleEntryFromTag(registry, MC, tag));
+            }).forEach(tag -> MC.registerCollapsibleEntryFromTag(registry, tag));
 
             // Tools according to materials
             {
@@ -332,7 +328,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
             // Toolboxes & seats
             Arrays.stream(new String[]{ "toolboxes", "seats" }).forEach(tag ->
-                    registerCollapsibleEntryFromTag(registry, CREATE, tag)
+                    CREATE.registerCollapsibleEntryFromTag(registry, tag)
             );
         }
 
@@ -340,7 +336,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         farmersDelight: {
             // Canvas signs
-            registerCollapsibleEntryFromTag(registry, FARMERS_DELIGHT, "canvas_signs");
+            FARMERS_DELIGHT.registerCollapsibleEntryFromTag(registry, "canvas_signs");
         }
 
         // --- Hephaestus
@@ -377,7 +373,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
             // Casts
             Arrays.stream(new String[]{"red_sand", "sand", "gold"}).forEach(cast ->
-                    registerCollapsibleEntryFromTag(registry, TC, "casts", cast)
+                    TC.registerCollapsibleEntryFromTag(registry, "casts", cast)
             );
 
             // Tools
@@ -487,7 +483,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         itemFilters: {
             // Filters
-            registerCollapsibleEntryFromTag(registry, ITEM_FILTERS, "filters");
+            ITEM_FILTERS.registerCollapsibleEntryFromTag(registry, "filters");
         }
 
         // --- Kibe
