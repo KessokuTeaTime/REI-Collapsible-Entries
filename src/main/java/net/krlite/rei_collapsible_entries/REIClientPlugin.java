@@ -3,16 +3,12 @@ package net.krlite.rei_collapsible_entries;
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
-import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.krlite.rei_collapsible_entries.util.ModPredicate;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static net.krlite.rei_collapsible_entries.util.ModEntry.*;
 
@@ -30,12 +26,12 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         types: {
             // Fluids
-            MC.buildColumn("fluids")
+            MC.buildCollection("fluids")
                     .predicate(ModPredicate.type(VanillaEntryTypes.FLUID))
                     .register(registry);
 
             // Spawn eggs
-            MC.buildColumn("spawn_eggs")
+            MC.buildCollection("spawn_eggs")
                     .predicate(ModPredicate.pathTrailing("spawn_egg"))
                     .register(registry);
         }
@@ -80,119 +76,110 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "decorated_pot_sherds", "swords", "shovels", "pickaxes",
                     "axes", "hoes", "small_flowers", "tall_flowers", "rails"
             }).forEach(tag -> MC.registerCollapsibleEntryFromTag(registry, tag));
-/*
-            // TODO: 2023/12/30
+
             // Tools according to materials
             {
-                final String[] MATERIALS = new String[]{ "wooden", "stone", "golden", "iron", "diamond", "netherite" };
-                final String[] TOOLS = new String[]{ "sword", "shovel", "pickaxe", "axe", "hoe" };
+                final String[] MATERIALS = new String[]{"wooden", "stone", "golden", "iron", "diamond", "netherite"};
+                final String[] TOOLS = new String[]{"sword", "shovel", "pickaxe", "axe", "hoe"};
 
-                Arrays.stream(MATERIALS).forEach(material -> registry.group(
-                        MC.id("tools", material),
-                        col(MC.id("tools", material)),
-                        entryStack -> MC.contains(entryStack.getIdentifier())
-                                && Arrays.stream(TOOLS)
-                                .map(p -> joinAll(material, p))
-                                .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
-                ));
-            }*/
-/*
-            // TODO: 2023/12/30
+                Arrays.stream(MATERIALS).forEach(material ->
+                        MC.buildCollection("tools", material)
+                                .predicate(ModPredicate.iterate(
+                                        p -> ModPredicate.path(joinAll(material, p)),
+                                        TOOLS
+                                ))
+                                .register(registry)
+                );
+            }
+
             // Armors according to materials & types
             {
                 final String[] MATERIALS = new String[]{"leather", "chainmail", "iron", "diamond", "golden", "netherite"};
-                final String[] ARMORS = new String[]{"helmet", "chestplate", "leggings", "boots"};
+                final String[] ARMORS = new String[]{"helmet", "chestplate", "suit", "leggings", "pants", "boots"};
 
-                Arrays.stream(MATERIALS).forEach(material -> registry.group(
-                        MC.id("armors", material),
-                        col(MC.id("armors", material)),
-                        entryStack -> MC.contains(entryStack.getIdentifier())
-                                && Arrays.stream(ARMORS)
-                                .map(p -> joinAll(material, p))
-                                .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
-                ));
+                Arrays.stream(MATERIALS).forEach(material ->
+                        MC.buildCollection("armors", material)
+                                .predicate(ModPredicate.iterate(
+                                        p -> ModPredicate.path(joinAll(material, p)),
+                                        ARMORS
+                                ))
+                                .register(registry)
+                );
 
-                Arrays.stream(ARMORS).forEach(type -> registry.group(
-                        MC.id("armor_types", type),
-                        col(MC.id("armor_types", type)),
-                        predicateTrailing(MC.id(type))
-                ));
-            }*/
+                Arrays.stream(ARMORS).forEach(type ->
+                        MC.buildCollection("armor_types", type)
+                                .predicate(ModPredicate.pathTrailing(type))
+                                .register(registry)
+                );
+            }
 
             // Enchanted books
-            MC.buildColumn("enchanted_books")
+            MC.buildCollection("enchanted_books")
                     .predicate(ModPredicate.id(Registries.ITEM.getId(Items.ENCHANTED_BOOK)))
                     .register(registry);
 
             // Tipped arrows
-            MC.buildColumn("tipped_arrows")
+            MC.buildCollection("tipped_arrows")
                     .predicate(ModPredicate.id(Registries.ITEM.getId(Items.TIPPED_ARROW)))
                     .register(registry);
 
             // Paintings
-            MC.buildColumn("paintings")
+            MC.buildCollection("paintings")
                     .predicate(ModPredicate.id(Registries.ITEM.getId(Items.PAINTING)))
                     .register(registry);
 
             // Goat horns
-            MC.buildColumn("goat_horns")
+            MC.buildCollection("goat_horns")
                     .predicate(ModPredicate.id(Registries.ITEM.getId(Items.GOAT_HORN)))
                     .register(registry);
 
             // Suspicious stews
-            MC.buildColumn("suspicious_stews")
+            MC.buildCollection("suspicious_stews")
                     .predicate(ModPredicate.id(Registries.ITEM.getId(Items.SUSPICIOUS_STEW)))
                     .register(registry);
 
             // Banner patterns
-            MC.buildColumn("banner_patterns")
+            MC.buildCollection("banner_patterns")
                     .predicate(ModPredicate.pathTrailing("banner_pattern"))
                     .register(registry);
 
             // Horse armors
-            MC.buildColumn("horse_armors")
+            MC.buildCollection("horse_armors")
                     .predicate(ModPredicate.pathTrailing("horse_armor"))
                     .register(registry);
-/*
-            // TODO: 2023/12/30
+
             // Potions
-            Arrays.stream(new String[]{ null, "lingering", "splash" }).forEach(prefix -> registry.group(
-                    MC.id(joinAll(prefix, "potions")),
-                    col(MC.id(joinAll(prefix, "potions"))),
-                    predicate(MC.id(joinAll(prefix, "potion")))
-            ));*/
-/*
-            // TODO: 2023/12/30
+            Arrays.stream(new String[]{ null, "lingering", "splash" }).forEach(prefix ->
+                    MC.buildCollection(prefix, "potions")
+                            .predicate(ModPredicate.idTrailing(MC.id(joinAll(prefix, "potion"))))
+                            .register(registry)
+            );
+
             // Colored blocks
             Arrays.stream(new String[]{
                     "terracotta", "glazed_terracotta", "concrete",
                     "concrete_powder", "wool", "carpet"
-            }).forEach(type -> registry.group(
-                    MC.id("blocks", type),
-                    col(MC.id("blocks", type)),
-                    EntryIngredients.ofItems(Arrays.stream(DYE_COLORS)
-                            .map(color -> MC.item(joinAll(color, type)))
-                            .collect(Collectors.toList()))
-            ));*/
-/*
-            // TODO: 2023/12/30
+            }).forEach(type -> MC.buildCollection("blocks", type)
+                    .predicate(ModPredicate.pathDyeVariants(color -> joinAll(color, type)))
+            );
+
             // Corals
             {
                 final String[] TYPES = new String[]{ "tube", "brain", "bubble", "fire", "horn" };
                 final String[] PREFIXES = new String[]{ null, "dead" };
                 final String[] POSTFIXES = new String[]{ "coral", "coral_fan", "coral_block" };
 
-                Arrays.stream(POSTFIXES).forEach(postfix -> registry.group(
-                        MC.id("blocks", postfix),
-                        col(MC.id("blocks", postfix)),
-                        entryStack -> MC.contains(entryStack.getIdentifier())
-                                && Arrays.stream(TYPES)
-                                .map(p -> joinAll(p, postfix))
-                                .flatMap(p -> Arrays.stream(PREFIXES)
-                                        .map(pp -> joinAll(pp, p)))
-                                .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
-                ));
-            }*/
+                Arrays.stream(POSTFIXES).forEach(postfix ->
+                        MC.buildCollection("blocks", postfix)
+                                .predicate(ModPredicate.iterate(
+                                        p -> ModPredicate.iterate(
+                                                pp -> ModPredicate.path(joinAll(pp ,p)),
+                                                PREFIXES
+                                        ),
+                                        TYPES
+                                ))
+                );
+            }
 /*
             // TODO: 2023/12/30
             // Skulls and heads
@@ -209,7 +196,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             }*/
 
             // Lights
-            MC.buildColumn("blocks", "light")
+            MC.buildCollection("blocks", "light")
                     .predicate(ModPredicate.idTrailing(Registries.BLOCK.getId(Blocks.LIGHT)))
                     .register(registry);
 /*
@@ -228,12 +215,12 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         adAstra: {
             // Flags
-            AD_ASTRA.buildColumn("flags")
+            AD_ASTRA.buildCollection("flags")
                     .predicate(ModPredicate.idTrailing(AD_ASTRA.id("flag")))
                     .register(registry);
 
             // Globes
-            AD_ASTRA.buildColumn("globes")
+            AD_ASTRA.buildCollection("globes")
                     .predicate(ModPredicate.idTrailing(AD_ASTRA.id("globe")))
                     .register(registry);
         }
@@ -269,7 +256,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         computerCraft: {
             // Disks
-            CC.buildColumn("disks")
+            CC.buildCollection("disks")
                     .predicate(ModPredicate.id(CC.id("disk")))
                     .register(registry);
 /*
@@ -335,23 +322,23 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         hephaestus: {
             // Modifiers
-            TC.buildColumn("modifiers")
+            TC.buildCollection("modifiers")
                     .predicate(ModPredicate.mod(TC)
                             .and(ModPredicate.type(EntryType.deferred(TC.id("modifier_entry")))))
                     .register(registry);
 
             // Slime helmets
-            TC.buildColumn("slime_helmets")
+            TC.buildCollection("slime_helmets")
                     .predicate(ModPredicate.id(TC.id("slime_helmet")))
                     .register(registry);
 
             // Modifier Crystals
-            TC.buildColumn("modifier_crystals")
+            TC.buildCollection("modifier_crystals")
                     .predicate(ModPredicate.id(TC.id("modifier_crystal")))
                     .register(registry);
 
             // Platforms
-            TC.buildColumn("platforms")
+            TC.buildCollection("platforms")
                     .predicate(ModPredicate.idTrailing(TC.id("platform")))
                     .register(registry);
 /*
@@ -389,7 +376,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             ));*/
 
             // Anvils
-            TC.buildColumn("anvils")
+            TC.buildCollection("anvils")
                     .predicate(ModPredicate.mod(TC)
                             .and(ModPredicate.path("scorched_anvil")
                                     .or(ModPredicate.path("tinkers_anvil"))))
@@ -412,14 +399,14 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             ));*/
 
             // Buckets
-            MC.buildColumn("buckets")
+            MC.buildCollection("buckets")
                     .predicate(ModPredicate.mod(MC, TC, CREATE, INDREV, AD_ASTRA, KIBE)
                             .and(ModPredicate.pathTrailingOnly("bucket"))
                             .and(ModPredicate.pathTrailing("potion_bucket").negate()))
                     .register(registry);
 
             // Potion buckets
-            TC.buildColumn("buckets", "potion")
+            TC.buildCollection("buckets", "potion")
                     .predicate(ModPredicate.id(TC.id("potion_bucket")))
                     .register(registry);
 /*
@@ -447,7 +434,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         // --- Industrial Revolution
 
         // Modules
-        INDREV.buildColumn("modules")
+        INDREV.buildCollection("modules")
                 .predicate(ModPredicate.idLeading(INDREV.id("module")))
                 .register(registry);
 
@@ -480,7 +467,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         promenade: {
             // Piles
-            PROMENADE.buildColumn("piles")
+            PROMENADE.buildCollection("piles")
                             .predicate(ModPredicate.idTrailing(PROMENADE.id("pile")));
 /*
             // TODO: 2023/12/30

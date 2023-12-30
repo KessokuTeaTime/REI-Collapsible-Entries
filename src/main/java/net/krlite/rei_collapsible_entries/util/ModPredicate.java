@@ -3,10 +3,13 @@ package net.krlite.rei_collapsible_entries.util;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 public interface ModPredicate extends Predicate<EntryStack<?>> {
     static Predicate<EntryStack<?>> pass() {
@@ -87,6 +90,13 @@ public interface ModPredicate extends Predicate<EntryStack<?>> {
         return mod(identifier).and(pathTrailingOnly(identifier));
     }
 
+    static Predicate<EntryStack<?>> pathDyeVariants(UnaryOperator<String> pathOperator) {
+        return entryStack -> Arrays.stream(DyeColor.values())
+                .map(DyeColor::getName)
+                .map(pathOperator)
+                .anyMatch(path -> path(path).test(entryStack));
+    }
+
     static Predicate<EntryStack<?>> tag(String... paths) {
         return entryStack -> entryStack.getTagsFor().anyMatch(tag -> tag.id().getPath().equals(ModEntry.joinAll(paths)));
     }
@@ -97,5 +107,12 @@ public interface ModPredicate extends Predicate<EntryStack<?>> {
 
     static Predicate<EntryStack<?>> type(EntryType<?> entryType) {
         return entryStack -> entryStack.getType().equals(entryType);
+    }
+
+    static Predicate<EntryStack<?>> iterate(
+            Function<String, Predicate<EntryStack<?>>> pathToPredication,
+            String... array
+    ) {
+        return entryStack -> Arrays.stream(array).anyMatch(path -> pathToPredication.apply(path).test(entryStack));
     }
 }

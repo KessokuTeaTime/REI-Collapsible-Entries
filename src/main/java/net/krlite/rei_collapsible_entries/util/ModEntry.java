@@ -2,7 +2,6 @@ package net.krlite.rei_collapsible_entries.util;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -76,7 +75,7 @@ public enum ModEntry {
      * @param paths The identifier's paths.
      * @return The tagged text.
      */
-    public Text taggedName(String... paths) {
+    public Text nameTagged(String... paths) {
         return convertToTranslatableText("tagged", id(paths));
     }
 
@@ -87,20 +86,20 @@ public enum ModEntry {
      * @param paths The identifier's paths.
      * @return The coled text.
      */
-    public Text columnName(String... paths) {
-        return convertToTranslatableText("column", id(paths));
+    public Text nameCollection(String... paths) {
+        return convertToTranslatableText("collection", id(paths));
     }
 
     public ModPredicateBuilder build(Text name, String... paths) {
         return new ModPredicateBuilder(id(paths), name, ModPredicate.fail());
     }
 
-    public ModPredicateBuilder buildColumn(String... paths) {
-        return build(columnName(paths), paths);
+    public ModPredicateBuilder buildTagged(String... paths) {
+        return build(nameTagged(paths), paths);
     }
 
-    public ModPredicateBuilder buildTagged(String... paths) {
-        return build(taggedName(paths), paths);
+    public ModPredicateBuilder buildCollection(String... paths) {
+        return build(nameCollection(paths), paths);
     }
 
     /**
@@ -115,7 +114,7 @@ public enum ModEntry {
     ) {
         registry.group(
                 id(tagPaths),
-                taggedName(tagPaths),
+                nameTagged(tagPaths),
                 EntryIngredients.ofItemTag(itemTag(tagPaths))
         );
     }
