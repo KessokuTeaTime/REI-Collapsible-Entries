@@ -35,6 +35,7 @@
   "tagged.minecraft.small_flowers"       : "Flowers",
   "tagged.minecraft.tall_flowers"        : "Tall Flowers",
   "tagged.minecraft.rails"               : "Rails",
+  "tagged.minecraft.sapling"             : "Saplings",
 
   "tagged.catwalksinc.filled_paint_rolls": "§6Filled Paint Rollers",
 
@@ -77,6 +78,7 @@
   "collection.minecraft.suspicious_stews": "Suspicious Stews",
   "collection.minecraft.banner_patterns" : "Banner Patterns",
   "collection.minecraft.horse_armors"    : "Horse Armors",
+  "collection.minecraft.minecarts"       : "Minecarts",
 
   "collection.minecraft.spawn_eggs": "Spawn Eggs",
   "collection.minecraft.buckets"   : "Fluid Buckets",
@@ -91,7 +93,6 @@
   "collection.minecraft.blocks/button"           : "Buttons",
   "collection.minecraft.blocks/pressure_plate"   : "Pressure Plates",
   "collection.minecraft.blocks/copper"           : "Copper Blocks",
-  "collection.minecraft.blocks/sapling"          : "Saplings",
   "collection.minecraft.blocks/coral"            : "Corals",
   "collection.minecraft.blocks/coral_fan"        : "Coral Fans",
   "collection.minecraft.blocks/coral_block"      : "Coral Blocks",
@@ -122,8 +123,22 @@
   "collection.minecraft.splash_potions"   : "Splash Potions",
   "collection.minecraft.potions"          : "Potions",
 
-  "collection.ad_astra:flags" : "Flags",
-  "collection.ad_astra:globes": "Globes",
+  "collection.ad_astra.flags" : "Flags",
+  "collection.ad_astra.globes": "Globes",
+  "collection.ad_astra.plates": "Metal Plates",
+
+  "collection.ad_astra.materials/iron"    : "Iron",
+  "collection.ad_astra.materials/steel"   : "Steel",
+  "collection.ad_astra.materials/desh"    : "Desh",
+  "collection.ad_astra.materials/ostrum"  : "Ostrum",
+  "collection.ad_astra.materials/calorite": "Calorite",
+
+  "collection.ad_astra.planets/moon"      : "Moon",
+  "collection.ad_astra.planets/mars"      : "Mars",
+  "collection.ad_astra.planets/venus"     : "Venus",
+  "collection.ad_astra.planets/mercury"   : "Mercury",
+  "collection.ad_astra.planets/glacio"    : "Glacio",
+  "collection.ad_astra.planets/permafrost": "Permafrost",
 
   "collection.ae2.paint_balls"      : "Paint Balls",
   "collection.ae2.lumen_paint_balls": "Lumen Paint Balls",
@@ -194,10 +209,19 @@
 
   "collection.indrev.modules": "Modules",
 
+  "collection.kibe.kibes"                 : "Kibes",
+  "collection.kibe.rings"                 : "Rings",
+  "collection.kibe.tanks"                 : "Tanks",
+  "collection.kibe.cobblestone_generators": "Cobblestone Generators",
+  "collection.kibe.basalt_generators"     : "Basalt Generators",
+
   "collection.kibe.things/sleeping_bag": "Sleeping Bags",
   "collection.kibe.things/glider"      : "Gliders",
   "collection.kibe.things/rune"        : "Runes",
   "collection.kibe.things/elevator"    : "Elevators",
+
+  "collection.kibe.blocks/spikes" : "Spikes",
+  "collection.kibe.blocks/belt"   : "Belts",
 
   "collection.promenade.piles": "Piles",
 

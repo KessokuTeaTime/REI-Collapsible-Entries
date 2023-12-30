@@ -35,6 +35,7 @@
   "tagged.minecraft.small_flowers"       : "花",
   "tagged.minecraft.tall_flowers"        : "花丛",
   "tagged.minecraft.rails"               : "铁轨",
+  "tagged.minecraft.sapling"             : "树苗",
 
   "tagged.catwalksinc.filled_paint_rolls": "§6油漆滚筒",
 
@@ -77,6 +78,7 @@
   "collection.minecraft.suspicious_stews": "迷之炖菜",
   "collection.minecraft.banner_patterns" : "旗帜图案",
   "collection.minecraft.horse_armors"    : "马铠",
+  "collection.minecraft.minecarts"       : "矿车",
 
   "collection.minecraft.spawn_eggs": "刷怪蛋",
   "collection.minecraft.buckets"   : "流体桶",
@@ -91,7 +93,6 @@
   "collection.minecraft.blocks/button"           : "按钮",
   "collection.minecraft.blocks/pressure_plate"   : "压力板",
   "collection.minecraft.blocks/copper"           : "铜块",
-  "collection.minecraft.blocks/sapling"          : "树苗",
   "collection.minecraft.blocks/coral"            : "珊瑚",
   "collection.minecraft.blocks/coral_fan"        : "珊瑚扇",
   "collection.minecraft.blocks/coral_block"      : "珊瑚块",
@@ -122,8 +123,22 @@
   "collection.minecraft.splash_potions"   : "喷溅型药水",
   "collection.minecraft.potions"          : "药水",
 
-  "collection.ad_astra:flags" : "基地旗帜",
-  "collection.ad_astra:globes": "地球仪",
+  "collection.ad_astra.flags" : "基地旗帜",
+  "collection.ad_astra.globes": "地球仪",
+  "collection.ad_astra.plates": "金属板",
+
+  "collection.ad_astra.materials/iron"    : "铁制物品",
+  "collection.ad_astra.materials/steel"   : "钢制物品",
+  "collection.ad_astra.materials/desh"    : "戴斯物品",
+  "collection.ad_astra.materials/ostrum"  : "紫金物品",
+  "collection.ad_astra.materials/calorite": "耐热合金物品",
+
+  "collection.ad_astra.planets/moon"      : "月球物品",
+  "collection.ad_astra.planets/mars"      : "火星物品",
+  "collection.ad_astra.planets/venus"     : "金星物品",
+  "collection.ad_astra.planets/mercury"   : "水星物品",
+  "collection.ad_astra.planets/glacio"    : "霜原星物品",
+  "collection.ad_astra.planets/permafrost": "冻土物品",
 
   "collection.ae2.paint_balls"      : "染色球",
   "collection.ae2.lumen_paint_balls": "光通染色球",
@@ -194,10 +209,19 @@
 
   "collection.indrev.modules": "模块",
 
+  "collection.kibe.kibes"                 : "羊肉面饼",
+  "collection.kibe.rings"                 : "戒指",
+  "collection.kibe.tanks"                 : "储罐",
+  "collection.kibe.cobblestone_generators": "圆石生成器",
+  "collection.kibe.basalt_generators"     : "玄武岩生成器",
+
   "collection.kibe.things/sleeping_bag": "睡袋",
   "collection.kibe.things/glider"      : "滑翔翼",
   "collection.kibe.things/rune"        : "符文",
   "collection.kibe.things/elevator"    : "电梯",
+
+  "collection.kibe.blocks/spikes" : "尖刺",
+  "collection.kibe.blocks/belt"   : "传送带",
 
   "collection.promenade.piles": "树叶堆和花丛",
 
