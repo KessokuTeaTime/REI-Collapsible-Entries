@@ -42,11 +42,11 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         tags:
         {
-            {
+            {/*
                 // TODO: 2023/12/30
                 Arrays.stream(new String[]{
                         "shulker_boxes", "ores", "dyes"
-                }).forEach(tag -> registerCollapsibleEntryFromTag(registry, C, tag));
+                }).forEach(tag -> registerCollapsibleEntryFromTag(registry, C, tag));*/
 
                 // Glass blocks
                 C.buildTagged("glass_blocks")
@@ -59,12 +59,11 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
                 // Glass panes
                 C.buildTagged("glass_panes")
-                        .predicate(ModPredicate.tag(C.itemTag("glass_blocks"))
+                        .predicate(ModPredicate.tag(C.itemTag("glass_panes"))
                                 .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
                                         .and(ModPredicate.mod(TC))
                                         .and(ModPredicate.pathTrailing("glass_pane")))) // Special case for glass panes in TC
                         .register(registry);
-                );
             }
         }
 
@@ -81,7 +80,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "decorated_pot_sherds", "swords", "shovels", "pickaxes",
                     "axes", "hoes", "small_flowers", "tall_flowers", "rails"
             }).forEach(tag -> MC.registerCollapsibleEntryFromTag(registry, tag));
-
+/*
             // TODO: 2023/12/30
             // Tools according to materials
             {
@@ -96,8 +95,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                                 .map(p -> joinAll(material, p))
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
                 ));
-            }
-
+            }*/
+/*
             // TODO: 2023/12/30
             // Armors according to materials & types
             {
@@ -118,7 +117,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                         col(MC.id("armor_types", type)),
                         predicateTrailing(MC.id(type))
                 ));
-            }
+            }*/
 
             // Enchanted books
             MC.buildColumn("enchanted_books")
@@ -154,15 +153,15 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             MC.buildColumn("horse_armors")
                     .predicate(ModPredicate.pathTrailing("horse_armor"))
                     .register(registry);
-
+/*
             // TODO: 2023/12/30
             // Potions
             Arrays.stream(new String[]{ null, "lingering", "splash" }).forEach(prefix -> registry.group(
                     MC.id(joinAll(prefix, "potions")),
                     col(MC.id(joinAll(prefix, "potions"))),
                     predicate(MC.id(joinAll(prefix, "potion")))
-            ));
-
+            ));*/
+/*
             // TODO: 2023/12/30
             // Colored blocks
             Arrays.stream(new String[]{
@@ -174,8 +173,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     EntryIngredients.ofItems(Arrays.stream(DYE_COLORS)
                             .map(color -> MC.item(joinAll(color, type)))
                             .collect(Collectors.toList()))
-            ));
-
+            ));*/
+/*
             // TODO: 2023/12/30
             // Corals
             {
@@ -193,8 +192,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                                         .map(pp -> joinAll(pp, p)))
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
                 ));
-            }
-
+            }*/
+/*
             // TODO: 2023/12/30
             // Skulls and heads
             {
@@ -207,13 +206,13 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                                 && Arrays.stream(TYPES)
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().endsWith(p))
                 );
-            }
+            }*/
 
             // Lights
             MC.buildColumn("blocks", "light")
                     .predicate(ModPredicate.idTrailing(Registries.BLOCK.getId(Blocks.LIGHT)))
                     .register(registry);
-
+/*
             // TODO: 2023/12/30
             // Blocks
             Arrays.stream(new String[]{
@@ -222,7 +221,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     MC.id("blocks", type),
                     col(MC.id("blocks", type)),
                     predicateTrailing(MC.id(type))
-            ));
+            ));*/
         }
 
         // --- Ad Astra
@@ -232,11 +231,16 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             AD_ASTRA.buildColumn("flags")
                     .predicate(ModPredicate.idTrailing(AD_ASTRA.id("flag")))
                     .register(registry);
+
+            // Globes
+            AD_ASTRA.buildColumn("globes")
+                    .predicate(ModPredicate.idTrailing(AD_ASTRA.id("globe")))
+                    .register(registry);
         }
 
         // --- Applied Energetics 2
 
-        ae2: {
+        ae2: {/*
             // TODO: 2023/12/30
             // Paint balls
             final String postfix = "paint_ball";
@@ -247,7 +251,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                             EntryIngredients.ofItems(Arrays.stream(DYE_COLORS)
                                     .map(color -> AE2.item(joinAll(color, type, postfix)))
                                     .collect(Collectors.toList())))
-            );
+            );*/
         }
 
         // --- Catwalks LLC.
@@ -268,7 +272,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             CC.buildColumn("disks")
                     .predicate(ModPredicate.id(CC.id("disk")))
                     .register(registry);
-
+/*
             // TODO: 2023/12/30
             {
                 final String[] POSTFIXES = { "advanced", "normal" };
@@ -282,12 +286,12 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                                 .map(p -> joinAll(thing, p))
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
                 ));
-            }
+            }*/
         }
 
         // --- Create
 
-        create: {
+        create: {/*
             // TODO: 2023/12/30
             // Stone types
             Arrays.stream(new String[]{
@@ -301,8 +305,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                             CREATE.contains(entryStack.getIdentifier())
                                     && (entryStack.getTagsFor().anyMatch(tag -> tag.equals(CREATE.itemTag("stone_types", type)))
                                     || entryStack.getIdentifier().getPath().contains(type))
-            ));
-
+            ));*/
+/*
             // TODO: 2023/12/30
             // Copper tiles & shingles
             Arrays.stream(new String[]{ "tile", "shingle" }).forEach(type -> registry.group(
@@ -311,13 +315,13 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     entryStack ->
                             CREATE.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().contains(joinAll("copper", type))
-            ));
-
+            ));*/
+/*
             // TODO: 2023/12/30
             // Toolboxes & seats
             Arrays.stream(new String[]{ "toolboxes", "seats" }).forEach(tag ->
                     CREATE.registerCollapsibleEntryFromTag(registry, tag)
-            );
+            );*/
         }
 
         // --- Farmer's Delight
@@ -350,13 +354,13 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             TC.buildColumn("platforms")
                     .predicate(ModPredicate.idTrailing(TC.id("platform")))
                     .register(registry);
-
+/*
             // TODO: 2023/12/30
             // Casts
             Arrays.stream(new String[]{"red_sand", "sand", "gold"}).forEach(cast ->
                     TC.registerCollapsibleEntryFromTag(registry, "casts", cast)
-            );
-
+            );*/
+/*
             // TODO: 2023/12/30
             // Tools
             Arrays.stream(new String[]{
@@ -368,8 +372,9 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     TC.id("tools", tool),
                     col(TC.id("tools", tool)),
                     predicate(TC.id(tool))
-            ));
-
+            ));*/
+/*
+            // TODO: 2023/12/30
             // Parts
             Arrays.stream(new String[]{
                     "tough_handle", "tool_handle", "tool_binding",
@@ -381,7 +386,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     TC.id("parts", part),
                     col(TC.id("parts", part)),
                     predicate(TC.id(part))
-            ));
+            ));*/
 
             // Anvils
             TC.buildColumn("anvils")
@@ -389,22 +394,22 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                             .and(ModPredicate.path("scorched_anvil")
                                     .or(ModPredicate.path("tinkers_anvil"))))
                     .register(registry);
-
+/*
             // TODO: 2023/12/30
             // Stations
             Arrays.stream(new String[]{ "part_builder", "tinker_station", "crafting_station" }).forEach(station -> registry.group(
                     TC.id("stations", station),
                     col(TC.id("stations", station)),
                     predicate(TC.id(station))
-            ));
-
+            ));*/
+/*
             // TODO: 2023/12/30
             // Foundries & Smelteries
             Arrays.stream(new String[]{ "foundry", "smeltery" }).forEach(type -> registry.group(
                     TC.id("blocks", type),
                     tag(TC.id("blocks", type)),
                     EntryIngredients.ofItemTag(TC.itemTag(type))
-            ));
+            ));*/
 
             // Buckets
             MC.buildColumn("buckets")
@@ -417,7 +422,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             TC.buildColumn("buckets", "potion")
                     .predicate(ModPredicate.id(TC.id("potion_bucket")))
                     .register(registry);
-
+/*
             // TODO: 2023/12/30
             // Slime grasses
             Arrays.stream(new String[]{ "ichor", "ender", "sky", "earth", "vanilla" }).forEach(type -> registry.group(
@@ -426,8 +431,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     entryStack ->
                             TC.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().endsWith(joinAll(type, "slime_grass"))
-            ));
-
+            ));*/
+/*
             // TODO: 2023/12/30
             // Slime dirt & congealed slimes & slimes
             Arrays.stream(new String[]{ "slime_dirt", "congealed_slime", "slime" }).forEach(suffix -> registry.group(
@@ -436,7 +441,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     entryStack ->
                             TC.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().endsWith(suffix)
-            ));
+            ));*/
         }
 
         // --- Industrial Revolution
@@ -455,7 +460,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         // --- Kibe
 
-        kibe: {
+        kibe: {/*
             // TODO: 2023/12/30
             // Colorful blocks
             Arrays.stream(new String[]{ "sleeping_bag", "glider", "rune", "elevator" }).forEach(type -> registry.group(
@@ -468,7 +473,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                                     : Stream.empty()
                             )
                             .collect(Collectors.toList()))
-            ));
+            ));*/
         }
 
         // --- Promenade
@@ -477,7 +482,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             // Piles
             PROMENADE.buildColumn("piles")
                             .predicate(ModPredicate.idTrailing(PROMENADE.id("pile")));
-
+/*
             // TODO: 2023/12/30
             // Mushrooms & mushroom blocks
             Arrays.stream(new String[]{ null, "block" }).forEach(type -> registry.group(
@@ -486,7 +491,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     entryStack ->
                             PROMENADE.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().contains(joinAll("mushroom", type))
-            ));
+            ));*/
         }
     }
 }
