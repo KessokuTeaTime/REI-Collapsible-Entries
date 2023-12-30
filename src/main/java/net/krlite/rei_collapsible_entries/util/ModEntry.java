@@ -1,7 +1,6 @@
 package net.krlite.rei_collapsible_entries.util;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
-import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +14,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.function.Predicate;
 
 public enum ModEntry {
     C("c"),
@@ -77,8 +75,8 @@ public enum ModEntry {
      * @param paths The identifier's paths.
      * @return The tagged text.
      */
-    public Text tag(String... paths) {
-        return convertToTranslatableText("tag", id(paths));
+    public Text tagged(String... paths) {
+        return convertToTranslatableText("tagged", id(paths));
     }
 
     /**
@@ -88,12 +86,16 @@ public enum ModEntry {
      * @param paths The identifier's paths.
      * @return The coled text.
      */
-    public Text col(String... paths) {
-        return convertToTranslatableText("col", id(paths));
+    public Text column(String... paths) {
+        return convertToTranslatableText("column", id(paths));
     }
 
-    public ModPredicateBuilder build(String... paths) {
-        return new ModPredicateBuilder(id(paths), col(paths), ModPredicate.pass());
+    public ModPredicateBuilder buildColumn(String... paths) {
+        return new ModPredicateBuilder(id(paths), column(paths), ModPredicate.pass());
+    }
+
+    public ModPredicateBuilder buildTagged(String... paths) {
+        return new ModPredicateBuilder(id(paths), tagged(paths), ModPredicate.pass());
     }
 
     /**
@@ -108,7 +110,7 @@ public enum ModEntry {
     ) {
         registry.group(
                 id(tagPaths),
-                tag(tagPaths),
+                tagged(tagPaths),
                 EntryIngredients.ofItemTag(asItemTag(tagPaths))
         );
     }

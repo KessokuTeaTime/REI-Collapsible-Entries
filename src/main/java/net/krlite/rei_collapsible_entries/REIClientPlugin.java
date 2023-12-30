@@ -4,6 +4,7 @@ import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
+import net.krlite.rei_collapsible_entries.util.ModPredicate;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -29,20 +30,13 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         types: {
             // Fluids
-            registry.group(
-                    MC.id("fluids"),
-                    col(MC.id("fluids")),
-                    entryStack -> entryStack.getType() == VanillaEntryTypes.FLUID
-            );
+            MC.buildColumn("fluids")
+                    .predicate(ModPredicate.type(VanillaEntryTypes.FLUID))
+                    .register(registry);
 
             // Spawn eggs
-            registry.group(
-                    MC.id("spawn_eggs"),
-                    col(MC.id("spawn_eggs")),
-                    entryStack ->
-                            entryStack.getIdentifier() != null
-                                    && entryStack.getIdentifier().getPath().endsWith("spawn_egg")
-            );
+            MC.buildColumn("spawn_eggs")
+                            .predicate(ModPredicate.trailing("spawn_egg"));
         }
 
         tags: {
@@ -52,6 +46,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 }).forEach(tag -> registerCollapsibleEntryFromTag(registry, C, tag));
 
                 // Glass blocks
+                C.buildColumn("glass_blocks")
+
                 registry.group(
                         C.id("glass_blocks"),
                         tag(C.id("glass_blocks")),

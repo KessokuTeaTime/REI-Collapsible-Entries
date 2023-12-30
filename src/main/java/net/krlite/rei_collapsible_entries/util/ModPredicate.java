@@ -23,9 +23,17 @@ public interface ModPredicate extends Predicate<EntryStack<?>> {
                 && entryStack.getIdentifier().getPath().startsWith(ModEntry.joinAll(paths));
     }
 
+    static ModPredicate leadingOnly(String... paths) {
+        return (ModPredicate) leading(paths).and(full(paths).negate());
+    }
+
     static ModPredicate trailing(String... paths) {
         return entryStack -> entryStack.getIdentifier() != null
                 && entryStack.getIdentifier().getPath().endsWith(ModEntry.joinAll(paths));
+    }
+
+    static ModPredicate trailingOnly(String... paths) {
+        return (ModPredicate) trailing(paths).and(full(paths).negate());
     }
 
     static ModPredicate tag(String... paths) {
