@@ -1,4 +1,4 @@
-package net.krlite.rei_collapsible_entries;
+package net.krlite.rei_collapsible_entries.util;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.entry.EntryStack;
@@ -131,4 +131,6 @@ public enum ModEntry {
                 .reduce((f, s) -> f + "_" + s)
                 .orElse(subs[0]);
     }
+
+
 }

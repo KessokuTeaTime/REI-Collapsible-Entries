@@ -1,10 +1,8 @@
-package net.krlite.rei_collapsible_entries;
+package net.krlite.rei_collapsible_entries.util;
 
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Predicate;
 
 public interface ModPredicate extends Predicate<EntryStack<?>> {
