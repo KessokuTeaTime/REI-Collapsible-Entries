@@ -92,6 +92,10 @@ public enum ModEntry {
         return convertToTranslatableText("col", id(paths));
     }
 
+    public ModPredicateBuilder build(String... paths) {
+        return new ModPredicateBuilder(id(paths), col(paths), ModPredicate.pass());
+    }
+
     /**
      * Registers a collapsible entry from the given {@link TagKey}.
      *
@@ -131,6 +135,4 @@ public enum ModEntry {
                 .reduce((f, s) -> f + "_" + s)
                 .orElse(subs[0]);
     }
-
-
 }
