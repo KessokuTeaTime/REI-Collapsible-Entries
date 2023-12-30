@@ -122,7 +122,8 @@
   "collection.minecraft.splash_potions"   : "Splash Potions",
   "collection.minecraft.potions"          : "Potions",
 
-  "collection.ad_astra:flags": "Flags",
+  "collection.ad_astra:flags" : "Flags",
+  "collection.ad_astra:globes": "Globes",
 
   "collection.ae2.paint_balls"      : "Paint Balls",
   "collection.ae2.lumen_paint_balls": "Lumen Paint Balls",

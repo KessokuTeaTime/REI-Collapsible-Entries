@@ -122,7 +122,8 @@
   "collection.minecraft.splash_potions"   : "喷溅型药水",
   "collection.minecraft.potions"          : "药水",
 
-  "collection.ad_astra:flags": "基地旗帜",
+  "collection.ad_astra:flags" : "基地旗帜",
+  "collection.ad_astra:globes": "地球仪",
 
   "collection.ae2.paint_balls"      : "染色球",
   "collection.ae2.lumen_paint_balls": "光通染色球",

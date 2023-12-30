@@ -124,21 +124,21 @@ public enum ModEntry {
     }
 
     /**
-     * Joins all the given sub strings into a single string by underscores, ignoring
-     * nulls and empties.
+     * Joins all the given paths into a single string by underscores, ignoring
+     * nulls and empty strings.
      * <br />
      * <code>["sub", null, "string"] -> ["sub_string"]</code>
      *
-     * @param subs The sub strings to join.
+     * @param paths The paths to join.
      * @return The joined string.
      */
-    public static String joinAll(String... subs) {
-        if (subs.length < 1)
+    public static String joinAll(String... paths) {
+        if (paths.length < 1)
             return "";
-        return Arrays.stream(subs)
+        return Arrays.stream(paths)
                 .filter(Objects::nonNull)
                 .filter(s -> !s.isEmpty())
                 .reduce((f, s) -> f + "_" + s)
-                .orElse(subs[0]);
+                .orElse(paths[0]);
     }
 }
