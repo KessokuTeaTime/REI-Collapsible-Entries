@@ -26,14 +26,6 @@ public class ModPredicateBuilder {
         return new ModPredicateBuilder(identifier, name, predicate);
     }
 
-    public ModPredicateBuilder and(Predicate<EntryStack<?>> predicate) {
-        return predicate(this.predicate.and(predicate));
-    }
-
-    public ModPredicateBuilder or(Predicate<EntryStack<?>> predicate) {
-        return predicate(this.predicate.or(predicate));
-    }
-
     public ModPredicateBuilder negate() {
         return predicate(this.predicate.negate());
     }

@@ -2,6 +2,7 @@ package net.krlite.rei_collapsible_entries.util;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -44,28 +45,28 @@ public enum ModEntry {
         return new Identifier(modid(), String.join("/", path));
     }
 
-    public Item asItem(String... paths) {
+    public Item item(String... paths) {
         return Registries.ITEM.get(id(paths));
     }
 
-    public TagKey<Item> asItemTag(String... paths) {
+    public TagKey<Item> itemTag(String... paths) {
         return TagKey.of(RegistryKeys.ITEM, id(paths));
     }
 
-    public ItemStack asStack(int count, String... paths) {
-        return new ItemStack(asItem(paths), count);
+    public ItemStack stack(int count, String... paths) {
+        return new ItemStack(item(paths), count);
     }
 
-    public ItemStack asStack(String... paths) {
-        return new ItemStack(asItem(paths), 1);
+    public ItemStack stack(String... paths) {
+        return new ItemStack(item(paths), 1);
     }
 
-    public boolean checkContains(@Nullable Identifier id) {
+    public boolean contains(@Nullable Identifier id) {
         return id != null && id.getNamespace().equals(modid());
     }
 
-    public boolean checkContains(@NotNull Item item) {
-        return checkContains(Registries.ITEM.getId(item));
+    public boolean contains(@NotNull Item item) {
+        return contains(Registries.ITEM.getId(item));
     }
 
     /**
@@ -75,7 +76,7 @@ public enum ModEntry {
      * @param paths The identifier's paths.
      * @return The tagged text.
      */
-    public Text tagged(String... paths) {
+    public Text taggedName(String... paths) {
         return convertToTranslatableText("tagged", id(paths));
     }
 
@@ -86,16 +87,20 @@ public enum ModEntry {
      * @param paths The identifier's paths.
      * @return The coled text.
      */
-    public Text column(String... paths) {
+    public Text columnName(String... paths) {
         return convertToTranslatableText("column", id(paths));
     }
 
+    public ModPredicateBuilder build(Text name, String... paths) {
+        return new ModPredicateBuilder(id(paths), name, ModPredicate.fail());
+    }
+
     public ModPredicateBuilder buildColumn(String... paths) {
-        return new ModPredicateBuilder(id(paths), column(paths), ModPredicate.pass());
+        return build(columnName(paths), paths);
     }
 
     public ModPredicateBuilder buildTagged(String... paths) {
-        return new ModPredicateBuilder(id(paths), tagged(paths), ModPredicate.pass());
+        return build(taggedName(paths), paths);
     }
 
     /**
@@ -110,8 +115,8 @@ public enum ModEntry {
     ) {
         registry.group(
                 id(tagPaths),
-                tagged(tagPaths),
-                EntryIngredients.ofItemTag(asItemTag(tagPaths))
+                taggedName(tagPaths),
+                EntryIngredients.ofItemTag(itemTag(tagPaths))
         );
     }
 

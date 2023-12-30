@@ -36,37 +36,34 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
             // Spawn eggs
             MC.buildColumn("spawn_eggs")
-                            .predicate(ModPredicate.trailing("spawn_egg"));
+                    .predicate(ModPredicate.pathTrailing("spawn_egg"))
+                    .register(registry);
         }
 
-        tags: {
+        tags:
+        {
             {
+                // TODO: 2023/12/30
                 Arrays.stream(new String[]{
                         "shulker_boxes", "ores", "dyes"
                 }).forEach(tag -> registerCollapsibleEntryFromTag(registry, C, tag));
 
                 // Glass blocks
-                C.buildColumn("glass_blocks")
-
-                registry.group(
-                        C.id("glass_blocks"),
-                        tag(C.id("glass_blocks")),
-                        entryStack ->
-                                entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass_blocks")))
-                                        || (entryStack.getType() != VanillaEntryTypes.FLUID
-                                        && (TC.checkContains(entryStack.getIdentifier()) || AE2.checkContains(entryStack.getIdentifier()))
-                                        && entryStack.getIdentifier().getPath().endsWith("glass")) // Special case for glass in TC & AE2
-                );
+                C.buildTagged("glass_blocks")
+                        .predicate(ModPredicate.tag(C.itemTag("glass_blocks"))
+                                .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
+                                        .and(ModPredicate.mod(TC)
+                                                .or(ModPredicate.mod(AE2)))
+                                        .and(ModPredicate.pathTrailing("glass")))) // Special case for glass in TC & AE2
+                        .register(registry);
 
                 // Glass panes
-                registry.group(
-                        C.id("glass_panes"),
-                        tag(C.id("glass_panes")),
-                        entryStack ->
-                                entryStack.getTagsFor().anyMatch(tag -> tag.equals(C.asItemTag("glass_panes")))
-                                        || (entryStack.getType() != VanillaEntryTypes.FLUID
-                                        && TC.checkContains(entryStack.getIdentifier())
-                                        && entryStack.getIdentifier().getPath().endsWith("glass_pane")) // Special case for glass panes in TC
+                C.buildTagged("glass_panes")
+                        .predicate(ModPredicate.tag(C.itemTag("glass_blocks"))
+                                .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
+                                        .and(ModPredicate.mod(TC))
+                                        .and(ModPredicate.pathTrailing("glass_pane")))) // Special case for glass panes in TC
+                        .register(registry);
                 );
             }
         }
@@ -74,6 +71,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         // --- Minecraft
 
         minecraft: {
+            // TODO: 2023/12/30
             // Tags
             Arrays.stream(new String[]{
                     "music_discs", "carpets", "banners", "candles", "beds",
@@ -84,6 +82,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "axes", "hoes", "small_flowers", "tall_flowers", "rails"
             }).forEach(tag -> MC.registerCollapsibleEntryFromTag(registry, tag));
 
+            // TODO: 2023/12/30
             // Tools according to materials
             {
                 final String[] MATERIALS = new String[]{ "wooden", "stone", "golden", "iron", "diamond", "netherite" };
@@ -92,13 +91,14 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 Arrays.stream(MATERIALS).forEach(material -> registry.group(
                         MC.id("tools", material),
                         col(MC.id("tools", material)),
-                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                        entryStack -> MC.contains(entryStack.getIdentifier())
                                 && Arrays.stream(TOOLS)
                                 .map(p -> joinAll(material, p))
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
                 ));
             }
 
+            // TODO: 2023/12/30
             // Armors according to materials & types
             {
                 final String[] MATERIALS = new String[]{"leather", "chainmail", "iron", "diamond", "golden", "netherite"};
@@ -107,7 +107,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 Arrays.stream(MATERIALS).forEach(material -> registry.group(
                         MC.id("armors", material),
                         col(MC.id("armors", material)),
-                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                        entryStack -> MC.contains(entryStack.getIdentifier())
                                 && Arrays.stream(ARMORS)
                                 .map(p -> joinAll(material, p))
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
@@ -121,54 +121,41 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             }
 
             // Enchanted books
-            registry.group(
-                    MC.id("enchanted_books"),
-                    col(MC.id("enchanted_books")),
-                    predicate(Registries.ITEM.getId(Items.ENCHANTED_BOOK))
-            );
+            MC.buildColumn("enchanted_books")
+                    .predicate(ModPredicate.id(Registries.ITEM.getId(Items.ENCHANTED_BOOK)))
+                    .register(registry);
 
             // Tipped arrows
-            registry.group(
-                    MC.id("tipped_arrows"),
-                    col(MC.id("tipped_arrows")),
-                    predicate(Registries.ITEM.getId(Items.TIPPED_ARROW))
-            );
+            MC.buildColumn("tipped_arrows")
+                    .predicate(ModPredicate.id(Registries.ITEM.getId(Items.TIPPED_ARROW)))
+                    .register(registry);
 
             // Paintings
-            registry.group(
-                    MC.id("paintings"),
-                    col(MC.id("paintings")),
-                    predicate(Registries.ITEM.getId(Items.PAINTING))
-            );
+            MC.buildColumn("paintings")
+                    .predicate(ModPredicate.id(Registries.ITEM.getId(Items.PAINTING)))
+                    .register(registry);
 
             // Goat horns
-            registry.group(
-                    MC.id("goat_horns"),
-                    col(MC.id("goat_horns")),
-                    predicate(Registries.ITEM.getId(Items.GOAT_HORN))
-            );
+            MC.buildColumn("goat_horns")
+                    .predicate(ModPredicate.id(Registries.ITEM.getId(Items.GOAT_HORN)))
+                    .register(registry);
 
             // Suspicious stews
-            registry.group(
-                    MC.id("suspicious_stews"),
-                    col(MC.id("suspicious_stews")),
-                    predicate(Registries.ITEM.getId(Items.SUSPICIOUS_STEW))
-            );
+            MC.buildColumn("suspicious_stews")
+                    .predicate(ModPredicate.id(Registries.ITEM.getId(Items.SUSPICIOUS_STEW)))
+                    .register(registry);
 
             // Banner patterns
-            registry.group(
-                    MC.id("banner_patterns"),
-                    col(MC.id("banner_patterns")),
-                    predicateTrailing(MC.id("banner_pattern"))
-            );
+            MC.buildColumn("banner_patterns")
+                    .predicate(ModPredicate.pathTrailing("banner_pattern"))
+                    .register(registry);
 
             // Horse armors
-            registry.group(
-                    MC.id("horse_armors"),
-                    col(MC.id("horse_armors")),
-                    predicateTrailing(MC.id("horse_armor"))
-            );
+            MC.buildColumn("horse_armors")
+                    .predicate(ModPredicate.pathTrailing("horse_armor"))
+                    .register(registry);
 
+            // TODO: 2023/12/30
             // Potions
             Arrays.stream(new String[]{ null, "lingering", "splash" }).forEach(prefix -> registry.group(
                     MC.id(joinAll(prefix, "potions")),
@@ -176,6 +163,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     predicate(MC.id(joinAll(prefix, "potion")))
             ));
 
+            // TODO: 2023/12/30
             // Colored blocks
             Arrays.stream(new String[]{
                     "terracotta", "glazed_terracotta", "concrete",
@@ -184,10 +172,11 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     MC.id("blocks", type),
                     col(MC.id("blocks", type)),
                     EntryIngredients.ofItems(Arrays.stream(DYE_COLORS)
-                            .map(color -> MC.asItem(joinAll(color, type)))
+                            .map(color -> MC.item(joinAll(color, type)))
                             .collect(Collectors.toList()))
             ));
 
+            // TODO: 2023/12/30
             // Corals
             {
                 final String[] TYPES = new String[]{ "tube", "brain", "bubble", "fire", "horn" };
@@ -197,7 +186,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 Arrays.stream(POSTFIXES).forEach(postfix -> registry.group(
                         MC.id("blocks", postfix),
                         col(MC.id("blocks", postfix)),
-                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                        entryStack -> MC.contains(entryStack.getIdentifier())
                                 && Arrays.stream(TYPES)
                                 .map(p -> joinAll(p, postfix))
                                 .flatMap(p -> Arrays.stream(PREFIXES)
@@ -206,6 +195,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 ));
             }
 
+            // TODO: 2023/12/30
             // Skulls and heads
             {
                 final String[] TYPES = new String[]{ "skull", "head" };
@@ -213,19 +203,18 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 registry.group(
                         MC.id("blocks", "skull_and_head"),
                         col(MC.id("blocks", "skull_and_head")),
-                        entryStack -> MC.checkContains(entryStack.getIdentifier())
+                        entryStack -> MC.contains(entryStack.getIdentifier())
                                 && Arrays.stream(TYPES)
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().endsWith(p))
                 );
             }
 
             // Lights
-            registry.group(
-                    MC.id("blocks", "light"),
-                    col(MC.id("blocks", "light")),
-                    predicateTrailing(Registries.BLOCK.getId(Blocks.LIGHT))
-            );
+            MC.buildColumn("blocks", "light")
+                    .predicate(ModPredicate.idTrailing(Registries.BLOCK.getId(Blocks.LIGHT)))
+                    .register(registry);
 
+            // TODO: 2023/12/30
             // Blocks
             Arrays.stream(new String[]{
                     "button", "pressure_plate", "copper", "sapling"
@@ -240,16 +229,15 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         adAstra: {
             // Flags
-            registry.group(
-                    AD_ASTRA.id("flags"),
-                    col(AD_ASTRA.id("flags")),
-                    predicateTrailing(AD_ASTRA.id("flag"))
-            );
+            AD_ASTRA.buildColumn("flags")
+                    .predicate(ModPredicate.idTrailing(AD_ASTRA.id("flag")))
+                    .register(registry);
         }
 
         // --- Applied Energetics 2
 
         ae2: {
+            // TODO: 2023/12/30
             // Paint balls
             final String postfix = "paint_ball";
             Arrays.stream(new String[]{ null, "lumen" }).forEach(
@@ -257,7 +245,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                             AE2.id(joinAll(type, "paint_balls")),
                             col(AE2.id(joinAll(type, "paint_balls"))),
                             EntryIngredients.ofItems(Arrays.stream(DYE_COLORS)
-                                    .map(color -> AE2.asItem(joinAll(color, type, postfix)))
+                                    .map(color -> AE2.item(joinAll(color, type, postfix)))
                                     .collect(Collectors.toList())))
             );
         }
@@ -266,21 +254,22 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         catwalksLLC: {
             // Paint rollers
-            registry.group(
-                    CATWALKS.id("filled_paint_rollers"),
-                    tag(CATWALKS.id("filled_paint_rollers")),
-                    entryStack ->
-                            CATWALKS.checkContains(entryStack.getIdentifier())
-                                    && (entryStack.getTagsFor().anyMatch(tag -> tag.equals(CATWALKS.asItemTag("filled_paint_rollers"))
-                                    || entryStack.getIdentifier().getPath().contains("filled_paint_rollers")))
-            );
+            CATWALKS.buildTagged("filled_paint_rollers")
+                    .predicate(ModPredicate.mod(CATWALKS)
+                            .and(ModPredicate.tag(CATWALKS.itemTag("filled_paint_rollers"))
+                                    .or(ModPredicate.pathTrailing("filled_paint_rollers"))))
+                    .register(registry);
         }
 
         // --- Computer Craft
 
         computerCraft: {
             // Disks
-            registry.group(CC.id("disks"), col(CC.id("disks")), predicate(CC.id("disk")));
+            CC.buildColumn("disks")
+                    .predicate(ModPredicate.id(CC.id("disk")))
+                    .register(registry);
+
+            // TODO: 2023/12/30
             {
                 final String[] POSTFIXES = { "advanced", "normal" };
 
@@ -288,7 +277,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                 Arrays.stream(new String[]{ "turtle", "pocket_computer" }).forEach(thing -> registry.group(
                         CC.id("things", thing),
                         col(CC.id("things", thing)),
-                        entryStack -> CC.checkContains(entryStack.getIdentifier())
+                        entryStack -> CC.contains(entryStack.getIdentifier())
                                 && Arrays.stream(POSTFIXES)
                                 .map(p -> joinAll(thing, p))
                                 .anyMatch(p -> entryStack.getIdentifier().getPath().equals(p))
@@ -299,6 +288,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         // --- Create
 
         create: {
+            // TODO: 2023/12/30
             // Stone types
             Arrays.stream(new String[]{
                     "veridium", "scorchia", "scoria", "ochrum", "limestone",
@@ -308,20 +298,22 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     CREATE.id("stone_types", type),
                     tag(CREATE.id("stone_types", type)),
                     entryStack ->
-                            CREATE.checkContains(entryStack.getIdentifier())
-                                    && (entryStack.getTagsFor().anyMatch(tag -> tag.equals(CREATE.asItemTag("stone_types", type)))
+                            CREATE.contains(entryStack.getIdentifier())
+                                    && (entryStack.getTagsFor().anyMatch(tag -> tag.equals(CREATE.itemTag("stone_types", type)))
                                     || entryStack.getIdentifier().getPath().contains(type))
             ));
 
+            // TODO: 2023/12/30
             // Copper tiles & shingles
             Arrays.stream(new String[]{ "tile", "shingle" }).forEach(type -> registry.group(
                     CREATE.id("blocks", joinAll("copper", type)),
                     col(CREATE.id("blocks", joinAll("copper", type))),
                     entryStack ->
-                            CREATE.checkContains(entryStack.getIdentifier())
+                            CREATE.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().contains(joinAll("copper", type))
             ));
 
+            // TODO: 2023/12/30
             // Toolboxes & seats
             Arrays.stream(new String[]{ "toolboxes", "seats" }).forEach(tag ->
                     CREATE.registerCollapsibleEntryFromTag(registry, tag)
@@ -339,39 +331,33 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         hephaestus: {
             // Modifiers
-            registry.group(
-                    TC.id("modifiers"),
-                    col(TC.id("modifiers")),
-                    EntryType.deferred(TC.id("modifier_entry")),
-                    entryStack -> TC.checkContains(entryStack.getIdentifier())
-            );
+            TC.buildColumn("modifiers")
+                    .predicate(ModPredicate.mod(TC)
+                            .and(ModPredicate.type(EntryType.deferred(TC.id("modifier_entry")))))
+                    .register(registry);
 
             // Slime helmets
-            registry.group(
-                    TC.id("slime_helmets"),
-                    col(TC.id("slime_helmets")),
-                    predicate(TC.id("slime_helmet"))
-            );
+            TC.buildColumn("slime_helmets")
+                    .predicate(ModPredicate.id(TC.id("slime_helmet")))
+                    .register(registry);
 
             // Modifier Crystals
-            registry.group(
-                    TC.id("modifier_crystals"),
-                    col(TC.id("modifier_crystals")),
-                    predicate(TC.id("modifier_crystal"))
-            );
+            TC.buildColumn("modifier_crystals")
+                    .predicate(ModPredicate.id(TC.id("modifier_crystal")))
+                    .register(registry);
 
             // Platforms
-            registry.group(
-                    TC.id("platforms"),
-                    col(TC.id("platforms")),
-                    predicateTrailing(TC.id("platform"))
-            );
+            TC.buildColumn("platforms")
+                    .predicate(ModPredicate.idTrailing(TC.id("platform")))
+                    .register(registry);
 
+            // TODO: 2023/12/30
             // Casts
             Arrays.stream(new String[]{"red_sand", "sand", "gold"}).forEach(cast ->
                     TC.registerCollapsibleEntryFromTag(registry, "casts", cast)
             );
 
+            // TODO: 2023/12/30
             // Tools
             Arrays.stream(new String[]{
                     "cleaver", "sword", "dagger", "scythe", "kama",
@@ -398,15 +384,13 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             ));
 
             // Anvils
-            registry.group(
-                    TC.id("anvils"),
-                    col(TC.id("anvils")),
-                    entryStack ->
-                            TC.checkContains(entryStack.getIdentifier())
-                                    && (entryStack.getIdentifier().getPath().equals("scorched_anvil")
-                                    || entryStack.getIdentifier().getPath().equals("tinkers_anvil"))
-            );
+            TC.buildColumn("anvils")
+                    .predicate(ModPredicate.mod(TC)
+                            .and(ModPredicate.path("scorched_anvil")
+                                    .or(ModPredicate.path("tinkers_anvil"))))
+                    .register(registry);
 
+            // TODO: 2023/12/30
             // Stations
             Arrays.stream(new String[]{ "part_builder", "tinker_station", "crafting_station" }).forEach(station -> registry.group(
                     TC.id("stations", station),
@@ -414,52 +398,43 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     predicate(TC.id(station))
             ));
 
+            // TODO: 2023/12/30
             // Foundries & Smelteries
             Arrays.stream(new String[]{ "foundry", "smeltery" }).forEach(type -> registry.group(
                     TC.id("blocks", type),
                     tag(TC.id("blocks", type)),
-                    EntryIngredients.ofItemTag(TC.asItemTag(type))
+                    EntryIngredients.ofItemTag(TC.itemTag(type))
             ));
 
             // Buckets
-            registry.group(
-                    MC.id("buckets"),
-                    col(MC.id("buckets")),
-                    entryStack ->
-                            ((MC.checkContains(entryStack.getIdentifier())
-                                    || TC.checkContains(entryStack.getIdentifier()) /* Also including TC's buckets */
-                                    || CREATE.checkContains(entryStack.getIdentifier()) /* Also including CR's buckets */
-                                    || INDREV.checkContains(entryStack.getIdentifier()) /* Also including IR's buckets */
-                                    || AD_ASTRA.checkContains(entryStack.getIdentifier()) /* Also including AD's buckets */
-                            )
-                                    && entryStack.getIdentifier().getPath().endsWith("bucket")
-                                    && !entryStack.getIdentifier().getPath().equals("potion_bucket") /* Avoid including potion buckets */
-                            )
-                                    || entryStack.getIdentifier().equals(KIBE.id("liquid_xp_bucket")) /* Also including Kibe's liquid xp bucket */
-            );
+            MC.buildColumn("buckets")
+                    .predicate(ModPredicate.mod(MC, TC, CREATE, INDREV, AD_ASTRA, KIBE)
+                            .and(ModPredicate.pathTrailingOnly("bucket"))
+                            .and(ModPredicate.pathTrailing("potion_bucket").negate()))
+                    .register(registry);
 
             // Potion buckets
-            registry.group(
-                    TC.id("buckets", "potion"),
-                    col(TC.id("buckets", "potion")),
-                    predicate(TC.id("potion_bucket"))
-            );
+            TC.buildColumn("buckets", "potion")
+                    .predicate(ModPredicate.id(TC.id("potion_bucket")))
+                    .register(registry);
 
+            // TODO: 2023/12/30
             // Slime grasses
             Arrays.stream(new String[]{ "ichor", "ender", "sky", "earth", "vanilla" }).forEach(type -> registry.group(
                     TC.id("slime_grasses", type),
                     col(TC.id("slime_grasses", type)),
                     entryStack ->
-                            TC.checkContains(entryStack.getIdentifier())
+                            TC.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().endsWith(joinAll(type, "slime_grass"))
             ));
 
+            // TODO: 2023/12/30
             // Slime dirt & congealed slimes & slimes
             Arrays.stream(new String[]{ "slime_dirt", "congealed_slime", "slime" }).forEach(suffix -> registry.group(
                     TC.id("blocks", suffix),
                     col(TC.id("blocks", suffix)),
                     entryStack ->
-                            TC.checkContains(entryStack.getIdentifier())
+                            TC.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().endsWith(suffix)
             ));
         }
@@ -467,13 +442,9 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         // --- Industrial Revolution
 
         // Modules
-        registry.group(
-                INDREV.id("modules"),
-                col(INDREV.id("modules")),
-                entryStack ->
-                        INDREV.checkContains(entryStack.getIdentifier())
-                                && entryStack.getIdentifier().getPath().startsWith("module")
-        );
+        INDREV.buildColumn("modules")
+                .predicate(ModPredicate.idLeading(INDREV.id("module")))
+                .register(registry);
 
         // --- Item Filters
 
@@ -485,14 +456,15 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         // --- Kibe
 
         kibe: {
+            // TODO: 2023/12/30
             // Colorful blocks
             Arrays.stream(new String[]{ "sleeping_bag", "glider", "rune", "elevator" }).forEach(type -> registry.group(
                     KIBE.id("things", type),
                     col(KIBE.id("things", type)),
                     EntryIngredients.ofItems(Stream.concat(
-                            Arrays.stream(DYE_COLORS).map(color -> KIBE.asItem(joinAll(color, type))),
+                            Arrays.stream(DYE_COLORS).map(color -> KIBE.item(joinAll(color, type))),
                             Objects.equals(type, "glider") // The glider has right/left wings
-                                    ? Stream.of(KIBE.asItem("glider_right_wing"), KIBE.asItem("glider_left_wing"))
+                                    ? Stream.of(KIBE.item("glider_right_wing"), KIBE.item("glider_left_wing"))
                                     : Stream.empty()
                             )
                             .collect(Collectors.toList()))
@@ -503,20 +475,16 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         promenade: {
             // Piles
-            registry.group(
-                    PROMENADE.id("piles"),
-                    col(PROMENADE.id("piles")),
-                    entryStack ->
-                            PROMENADE.checkContains(entryStack.getIdentifier())
-                                    && entryStack.getIdentifier().getPath().endsWith("pile")
-            );
+            PROMENADE.buildColumn("piles")
+                            .predicate(ModPredicate.idTrailing(PROMENADE.id("pile")));
 
+            // TODO: 2023/12/30
             // Mushrooms & mushroom blocks
             Arrays.stream(new String[]{ null, "block" }).forEach(type -> registry.group(
                     PROMENADE.id("blocks", joinAll("mushroom", type)),
                     col(PROMENADE.id("blocks", joinAll("mushroom", type))),
                     entryStack ->
-                            PROMENADE.checkContains(entryStack.getIdentifier())
+                            PROMENADE.contains(entryStack.getIdentifier())
                                     && entryStack.getIdentifier().getPath().contains(joinAll("mushroom", type))
             ));
         }
