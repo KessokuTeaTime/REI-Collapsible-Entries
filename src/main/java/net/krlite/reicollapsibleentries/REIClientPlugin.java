@@ -1,16 +1,16 @@
-package net.krlite.rei_collapsible_entries;
+package net.krlite.reicollapsibleentries;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
-import net.krlite.rei_collapsible_entries.util.ModPredicate;
+import net.krlite.reicollapsibleentries.util.ModPredicate;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 
 import java.util.Arrays;
 
-import static net.krlite.rei_collapsible_entries.util.ModEntry.*;
+import static net.krlite.reicollapsibleentries.util.ModEntry.*;
 
 @SuppressWarnings("UnstableApiUsage")
 public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIClientPlugin {

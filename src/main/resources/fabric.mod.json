@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "rei_collapsible_entries",
+  "id": "reicollapsibleentries",
   "version": "${version}",
 
   "name": "REI Collapsible Entries QOL",
@@ -14,19 +14,19 @@
   },
 
   "license": "GPL-3.0",
-  "icon": "assets/rei_collapsible_entries/icon.png",
+  "icon": "assets/reicollapsibleentries/icon.png",
 
   "environment": "client",
   "entrypoints": {
     "client": [
-      "net.krlite.rei_collapsible_entries.REICollapsibleEntries"
+      "net.krlite.reicollapsibleentries.REICollapsibleEntries"
     ],
     "rei_client": [
-      "net.krlite.rei_collapsible_entries.REIClientPlugin"
+      "net.krlite.reicollapsibleentries.REIClientPlugin"
     ]
   },
   "mixins": [
-    "rei_collapsible_entries.mixins.json"
+    "reicollapsibleentries.mixins.json"
   ],
 
   "depends": {

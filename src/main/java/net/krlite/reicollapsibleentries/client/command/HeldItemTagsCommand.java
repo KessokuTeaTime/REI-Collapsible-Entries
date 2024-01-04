@@ -1,9 +1,9 @@
-package net.krlite.rei_collapsible_entries.client.command;
+package net.krlite.reicollapsibleentries.client.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.krlite.rei_collapsible_entries.REICollapsibleEntries;
+import net.krlite.reicollapsibleentries.REICollapsibleEntries;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;

@@ -1,4 +1,4 @@
-package net.krlite.rei_collapsible_entries.util;
+package net.krlite.reicollapsibleentries.util;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryIngredients;

@@ -1,10 +1,10 @@
-package net.krlite.rei_collapsible_entries.client.listener;
+package net.krlite.reicollapsibleentries.client.listener;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.krlite.rei_collapsible_entries.REICollapsibleEntries;
-import net.krlite.rei_collapsible_entries.client.command.HeldItemTagsCommand;
+import net.krlite.reicollapsibleentries.REICollapsibleEntries;
+import net.krlite.reicollapsibleentries.client.command.HeldItemTagsCommand;
 import net.minecraft.command.CommandRegistryAccess;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;

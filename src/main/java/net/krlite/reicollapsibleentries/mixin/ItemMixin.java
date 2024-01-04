@@ -1,4 +1,4 @@
-package net.krlite.rei_collapsible_entries.mixin;
+package net.krlite.reicollapsibleentries.mixin;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
