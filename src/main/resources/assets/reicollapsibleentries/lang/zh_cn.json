@@ -1,4 +1,7 @@
 {
+  "modmenu.nameTranslation.reicollapsibleentries"       : "REI折叠物品条目",
+  "modmenu.descriptionTranslation.reicollapsibleentries": "向REI的物品搜索界面中添加了许多整洁的的折叠物品条目！支持来自原版和各种模组的物品。",
+
   "comment_tag": "标签",
 
   "tagged.c.shulker_boxes": "潜影盒",
