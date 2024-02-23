@@ -26,7 +26,7 @@
       "net.krlite.reicollapsibleentries.REIClientPlugin"
     ],
     "modmenu": [
-      "net.krlite.reicollapsibleentries.config.REICollapsibleEntriesModMenuIntegration"
+      "net.krlite.reicollapsibleentries.config.modmenu.REICollapsibleEntriesModMenuIntegration"
     ]
   },
   "mixins": [

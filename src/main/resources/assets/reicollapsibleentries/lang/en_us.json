@@ -1,7 +1,8 @@
 {
-  "text.autoconfig.reicollapsibleentries.title": "REI Collapsible Entries",
+  "screen.reicollapsibleentries.config.title": "REI Collapsible Entries",
 
-  "text.autoconfig.reicollapsibleentries.option.customTags": "Custom Tags",
+  "config.reicollapsibleentries.custom_tags"        : "Custom Tags",
+  "config.reicollapsibleentries.custom_tags.invalid": "Invalid tag!",
 
   "comment_tag": "Tags",
 
@@ -238,7 +239,7 @@
 
 
   "command.reicollapsibleentries.tags.click" : "Click to show more",
-  "command.reicollapsibleentries.tags.add"   : "Add to Custom Tags",
-  "command.reicollapsibleentries.tags.remove": "Remove from Custom Tags",
+  "command.reicollapsibleentries.tags.add"   : "§aAdd to Custom Tags",
+  "command.reicollapsibleentries.tags.remove": "§cRemove from Custom Tags",
   "command.reicollapsibleentries.tags.title" : "Confirm Tag"
 }

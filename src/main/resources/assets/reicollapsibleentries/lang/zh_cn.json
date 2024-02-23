@@ -2,9 +2,10 @@
   "modmenu.nameTranslation.reicollapsibleentries"       : "REI折叠物品条目",
   "modmenu.descriptionTranslation.reicollapsibleentries": "向REI的物品搜索界面中添加了折叠条目，支持来自原版和许多模组的物品。",
 
-  "text.autoconfig.reicollapsibleentries.title": "REI折叠物品条目",
+  "screen.reicollapsibleentries.config.title": "REI折叠物品条目",
 
-  "text.autoconfig.reicollapsibleentries.option.customTags": "自定义标签",
+  "config.reicollapsibleentries.custom_tags"        : "自定义标签",
+  "config.reicollapsibleentries.custom_tags.invalid": "不合法标签！",
 
   "comment_tag": "标签",
 
@@ -240,7 +241,7 @@
 
 
   "command.reicollapsibleentries.tags.click" : "点击显示更多",
-  "command.reicollapsibleentries.tags.add"   : "加入自定义标签",
-  "command.reicollapsibleentries.tags.remove": "从自定义标签中移除",
+  "command.reicollapsibleentries.tags.add"   : "§a加入自定义标签",
+  "command.reicollapsibleentries.tags.remove": "§c从自定义标签中移除",
   "command.reicollapsibleentries.tags.title" : "确认标签"
 }
