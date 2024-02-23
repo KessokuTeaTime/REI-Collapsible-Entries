@@ -33,7 +33,7 @@ public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 	@SuppressWarnings("deprecation")
 	private Text streamTags(ItemStack stack) {
 		return stack.getItem().getRegistryEntry().streamTags()
-				.map(tag -> Text.translatable("command." + REICollapsibleEntries.ID + ".held_item_tags.prefix")
+				.map(tag -> Text.translatable("tagged.#")
 						.formatted(Formatting.GRAY, Formatting.ITALIC)
 						.append(Text.literal(tag.id().toString())
 								.styled(style -> style

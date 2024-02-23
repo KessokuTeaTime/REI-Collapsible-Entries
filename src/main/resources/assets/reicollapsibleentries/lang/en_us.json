@@ -5,6 +5,9 @@
 
   "comment_tag": "Tags",
 
+  "tagged.#": "#",
+  "tagged.none": "Empty Tag",
+
   "tagged.c.shulker_boxes": "Shulker Boxes",
   "tagged.c.ores"         : "Ores",
   "tagged.c.dyes"         : "Dyes",
@@ -230,9 +233,5 @@
   "collection.promenade.piles": "Piles",
 
   "collection.promenade.blocks/mushroom"      : "Mushrooms",
-  "collection.promenade.blocks/mushroom_block": "Mushroom Blocks",
-
-
-
-  "command.reicollapsibleentries.held_item_tags.prefix": "#"
+  "collection.promenade.blocks/mushroom_block": "Mushroom Blocks"
 }

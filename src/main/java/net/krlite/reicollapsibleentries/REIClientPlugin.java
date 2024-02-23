@@ -3,23 +3,26 @@ package net.krlite.reicollapsibleentries;
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
+import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.krlite.reicollapsibleentries.core.ModPredicate;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import static net.krlite.reicollapsibleentries.core.ModEntry.*;
 
 @SuppressWarnings("UnstableApiUsage")
 public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIClientPlugin {
-    private static final String[] DYE_COLORS = {
-            "black", "red", "green", "brown", "blue", "purple",
-            "cyan", "light_gray", "gray", "pink", "lime",
-            "yellow", "light_blue", "magenta", "orange", "white"
-    };
-
     @Override
     public void registerCollapsibleEntries(CollapsibleEntryRegistry registry) {
         REICollapsibleEntries.LOGGER.info("Registering quality-of-life collapsible entries for REI!");
@@ -39,29 +42,45 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
 
         tags:
         {
-            {
-                // Ores
-                Arrays.stream(new String[]{
-                        "shulker_boxes", "ores", "dyes"
-                }).forEach(tag -> C.registerCollapsibleEntryFromTag(registry, tag));
+            // Custom tags
+            REICollapsibleEntries.CONFIG.customTags.forEach(tag ->
+                    Optional.ofNullable(Identifier.tryParse(tag)).ifPresent(identifier -> {
+                        TagKey<Item> tagKey = TagKey.of(Registries.ITEM.getKey(), identifier);
+                        List<Item> items = Registries.ITEM.stream()
+                                .filter(item -> item.getDefaultStack().isIn(tagKey))
+                                .toList();
 
-                // Glass blocks
-                C.buildTagged("glass_blocks")
-                        .predicate(ModPredicate.tag(C.itemTag("glass_blocks"))
-                                .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
-                                        .and(ModPredicate.mod(TC)
-                                                .or(ModPredicate.mod(AE2)))
-                                        .and(ModPredicate.pathTrailing("glass")))) // Special case for glass in TC & AE2
-                        .register(registry);
+                        if (!items.isEmpty()) {
+                            registry.group(
+                                    identifier,
+                                    REICollapsibleEntries.paintIdentifier(identifier),
+                                    EntryIngredients.ofItemTag(tagKey)
+                            );
+                        }
+                    })
+            );
 
-                // Glass panes
-                C.buildTagged("glass_panes")
-                        .predicate(ModPredicate.tag(C.itemTag("glass_panes"))
-                                .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
-                                        .and(ModPredicate.mod(TC))
-                                        .and(ModPredicate.pathTrailing("glass_pane")))) // Special case for glass panes in TC
-                        .register(registry);
-            }
+            // Ores
+            Arrays.stream(new String[]{
+                    "shulker_boxes", "ores", "dyes"
+            }).forEach(tag -> C.registerCollapsibleEntryFromTag(registry, tag));
+
+            // Glass blocks
+            C.buildTagged("glass_blocks")
+                    .predicate(ModPredicate.tag(C.itemTag("glass_blocks"))
+                            .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
+                                    .and(ModPredicate.mod(TC)
+                                            .or(ModPredicate.mod(AE2)))
+                                    .and(ModPredicate.pathTrailing("glass")))) // Special case for glass in TC & AE2
+                    .register(registry);
+
+            // Glass panes
+            C.buildTagged("glass_panes")
+                    .predicate(ModPredicate.tag(C.itemTag("glass_panes"))
+                            .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
+                                    .and(ModPredicate.mod(TC))
+                                    .and(ModPredicate.pathTrailing("glass_pane")))) // Special case for glass panes in TC
+                    .register(registry);
         }
 
         // --- Minecraft
