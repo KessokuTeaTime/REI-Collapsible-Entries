@@ -1,6 +1,10 @@
 {
   "modmenu.nameTranslation.reicollapsibleentries"       : "REI折叠物品条目",
-  "modmenu.descriptionTranslation.reicollapsibleentries": "向REI的物品搜索界面中添加了许多整洁的的折叠物品条目！支持来自原版和各种模组的物品。",
+  "modmenu.descriptionTranslation.reicollapsibleentries": "向REI的物品搜索界面中添加了折叠条目，支持来自原版和许多模组的物品。",
+
+  "text.autoconfig.reicollapsibleentries.title": "REI折叠物品条目",
+
+  "text.autoconfig.reicollapsibleentries.option.customTags": "自定义标签",
 
   "comment_tag": "标签",
 
@@ -38,7 +42,7 @@
   "tagged.minecraft.small_flowers"       : "花",
   "tagged.minecraft.tall_flowers"        : "花丛",
   "tagged.minecraft.rails"               : "铁轨",
-  "tagged.minecraft.sapling"             : "树苗",
+  "tagged.minecraft.saplings"            : "树苗",
 
   "tagged.catwalksinc.filled_paint_rolls": "§6油漆滚筒",
 

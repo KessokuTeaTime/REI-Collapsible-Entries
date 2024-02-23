@@ -24,6 +24,9 @@
     ],
     "rei_client": [
       "net.krlite.reicollapsibleentries.REIClientPlugin"
+    ],
+    "modmenu": [
+      "net.krlite.reicollapsibleentries.config.REICollapsibleEntriesModMenuIntegration"
     ]
   },
   "mixins": [
@@ -34,6 +37,7 @@
     "fabricloader": "*",
     "fabric-api": "*",
     "minecraft": "1.20.x",
+    "cloth-config": "*",
     "roughlyenoughitems": "*"
   },
   "suggests": {

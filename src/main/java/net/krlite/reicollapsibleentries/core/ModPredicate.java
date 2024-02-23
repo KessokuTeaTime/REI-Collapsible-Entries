@@ -1,4 +1,4 @@
-package net.krlite.reicollapsibleentries.util;
+package net.krlite.reicollapsibleentries.core;
 
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.EntryType;

@@ -1,4 +1,8 @@
 {
+  "text.autoconfig.reicollapsibleentries.title": "REI Collapsible Entries",
+
+  "text.autoconfig.reicollapsibleentries.option.customTags": "Custom Tags",
+
   "comment_tag": "Tags",
 
   "tagged.c.shulker_boxes": "Shulker Boxes",
@@ -35,7 +39,7 @@
   "tagged.minecraft.small_flowers"       : "Flowers",
   "tagged.minecraft.tall_flowers"        : "Tall Flowers",
   "tagged.minecraft.rails"               : "Rails",
-  "tagged.minecraft.sapling"             : "Saplings",
+  "tagged.minecraft.saplings"            : "Saplings",
 
   "tagged.catwalksinc.filled_paint_rolls": "§6Filled Paint Rollers",
 
