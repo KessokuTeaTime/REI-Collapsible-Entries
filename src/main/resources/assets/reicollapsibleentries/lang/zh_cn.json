@@ -241,5 +241,6 @@
 
   "command.reicollapsibleentries.tags.click" : "点击显示更多",
   "command.reicollapsibleentries.tags.add"   : "加入自定义标签",
-  "command.reicollapsibleentries.tags.remove": "从自定义标签中移除"
+  "command.reicollapsibleentries.tags.remove": "从自定义标签中移除",
+  "command.reicollapsibleentries.tags.title" : "确认标签"
 }

@@ -7,7 +7,7 @@
     "ItemMixin"
   ],
   "client": [
-    "ConfirmLinkScreenMixin"
+    "ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 0

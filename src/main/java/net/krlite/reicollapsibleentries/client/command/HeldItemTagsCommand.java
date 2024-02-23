@@ -35,7 +35,6 @@ public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 		return stack.getItem().getRegistryEntry().streamTags()
 				.map(tag -> REICollapsibleEntries.paintIdentifier(tag.id())
 						.styled(style -> style
-								.withColor(Formatting.YELLOW)
 								.withHoverEvent(new HoverEvent(
 										HoverEvent.Action.SHOW_TEXT,
 										Text.translatable("command.reicollapsibleentries.tags.click")
