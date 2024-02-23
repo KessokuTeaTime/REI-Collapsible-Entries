@@ -25,7 +25,7 @@ public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 
 		if (stack.getItem().getRegistryEntry().streamTags().findAny().isPresent()) {
 			context.getSource().sendFeedback(streamTags(stack));
-		} else context.getSource().sendFeedback(REICollapsibleEntries.paintIdentifier(""));
+		} else context.getSource().sendFeedback(Text.translatable("tagged.none"));
 
 		return SINGLE_SUCCESS;
 	}

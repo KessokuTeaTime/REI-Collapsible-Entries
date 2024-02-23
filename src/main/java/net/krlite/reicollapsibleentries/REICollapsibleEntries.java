@@ -48,10 +48,4 @@ public class REICollapsibleEntries implements ClientModInitializer {
 						.append(Text.literal(":").formatted(Formatting.GRAY))
 						.append(Text.literal(identifier.getPath()).formatted(Formatting.YELLOW));
 	}
-
-	public static MutableText paintIdentifier(@Nullable String identifierToParse) {
-		return Optional.ofNullable(Identifier.tryParse(identifierToParse))
-				.map(REICollapsibleEntries::paintIdentifier)
-				.orElse(Text.translatable("tagged.none").formatted(Formatting.GRAY));
-	}
 }

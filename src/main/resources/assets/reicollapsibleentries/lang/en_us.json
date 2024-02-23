@@ -7,7 +7,7 @@
   "comment_tag": "Tags",
 
   "tagged.#": "#",
-  "tagged.none": "Empty Tag",
+  "tagged.none": "§7Empty Tag",
 
   "tagged.c.shulker_boxes": "Shulker Boxes",
   "tagged.c.ores"         : "Ores",
