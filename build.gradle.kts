@@ -37,6 +37,10 @@ java {
 	withSourcesJar()
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/reicollapsibleentries.accesswidener")
+}
+
 tasks {
 	processResources {
 		inputs.property("version", libs.versions.mod.get())

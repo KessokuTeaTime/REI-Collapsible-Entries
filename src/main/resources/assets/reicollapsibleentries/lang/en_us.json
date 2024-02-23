@@ -233,5 +233,11 @@
   "collection.promenade.piles": "Piles",
 
   "collection.promenade.blocks/mushroom"      : "Mushrooms",
-  "collection.promenade.blocks/mushroom_block": "Mushroom Blocks"
+  "collection.promenade.blocks/mushroom_block": "Mushroom Blocks",
+
+
+
+  "command.reicollapsibleentries.tags.click" : "Click to show more",
+  "command.reicollapsibleentries.tags.add"   : "Add to Custom Tags",
+  "command.reicollapsibleentries.tags.remove": "Remove from Custom Tags"
 }

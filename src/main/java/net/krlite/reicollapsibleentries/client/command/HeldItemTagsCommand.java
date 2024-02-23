@@ -23,9 +23,9 @@ public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 		if (stack.isOf(Items.AIR))
 			return 0;
 
-		if (stack.getItem().getRegistryEntry().streamTags().findAny().isPresent())
+		if (stack.getItem().getRegistryEntry().streamTags().findAny().isPresent()) {
 			context.getSource().sendFeedback(streamTags(stack));
-		else context.getSource().sendFeedback(Text.literal("#?".formatted(Formatting.GRAY, Formatting.ITALIC)));
+		} else context.getSource().sendFeedback(REICollapsibleEntries.paintIdentifier(""));
 
 		return SINGLE_SUCCESS;
 	}
@@ -33,20 +33,19 @@ public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 	@SuppressWarnings("deprecation")
 	private Text streamTags(ItemStack stack) {
 		return stack.getItem().getRegistryEntry().streamTags()
-				.map(tag -> Text.translatable("tagged.#")
-						.formatted(Formatting.GRAY, Formatting.ITALIC)
-						.append(Text.literal(tag.id().toString())
-								.styled(style -> style
-										.withColor(Formatting.YELLOW)
-										.withHoverEvent(new HoverEvent(
-												HoverEvent.Action.SHOW_TEXT,
-												Text.literal(tag.id().toString()).formatted(Formatting.YELLOW)
-										))
-										.withClickEvent(new ClickEvent(
-												ClickEvent.Action.COPY_TO_CLIPBOARD,
-												tag.id().toString())
-										))
-						))
-				.reduce((a, b) -> a.append(", ").append(b)).orElse(Text.empty());
+				.map(tag -> REICollapsibleEntries.paintIdentifier(tag.id())
+						.styled(style -> style
+								.withColor(Formatting.YELLOW)
+								.withHoverEvent(new HoverEvent(
+										HoverEvent.Action.SHOW_TEXT,
+										Text.translatable("command.reicollapsibleentries.tags.click")
+								))
+								.withClickEvent(new ClickEvent(
+										ClickEvent.Action.OPEN_URL,
+										tag.id().toString()
+								)))
+				)
+				.reduce((a, b) -> a.append("\n").append(b))
+				.orElse(Text.empty());
 	}
 }

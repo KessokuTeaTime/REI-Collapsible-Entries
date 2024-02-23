@@ -13,6 +13,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,17 +41,17 @@ public class REICollapsibleEntries implements ClientModInitializer {
 		});
 	}
 
-	public static MutableText paintIdentifier(Identifier identifier) {
+	public static MutableText paintIdentifier(@NotNull Identifier identifier) {
 		return
-				Text.translatable("tagged.#").formatted(Formatting.YELLOW)
+				Text.translatable("tagged.#").formatted(Formatting.GRAY)
 						.append(Text.literal(identifier.getNamespace()).formatted(Formatting.AQUA))
 						.append(Text.literal(":").formatted(Formatting.GRAY))
 						.append(Text.literal(identifier.getPath()).formatted(Formatting.YELLOW));
 	}
 
-	public static MutableText paintIdentifier(String identifierToParse) {
+	public static MutableText paintIdentifier(@Nullable String identifierToParse) {
 		return Optional.ofNullable(Identifier.tryParse(identifierToParse))
 				.map(REICollapsibleEntries::paintIdentifier)
-				.orElse(Text.translatable("tagged.none"));
+				.orElse(Text.translatable("tagged.none").formatted(Formatting.GRAY));
 	}
 }

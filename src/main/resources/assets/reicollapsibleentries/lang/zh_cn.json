@@ -235,5 +235,11 @@
   "collection.promenade.piles": "树叶堆和花丛",
 
   "collection.promenade.blocks/mushroom"      : "蘑菇",
-  "collection.promenade.blocks/mushroom_block": "蘑菇块"
+  "collection.promenade.blocks/mushroom_block": "蘑菇块",
+
+
+
+  "command.reicollapsibleentries.tags.click" : "点击显示更多",
+  "command.reicollapsibleentries.tags.add"   : "加入自定义标签",
+  "command.reicollapsibleentries.tags.remove": "从自定义标签中移除"
 }

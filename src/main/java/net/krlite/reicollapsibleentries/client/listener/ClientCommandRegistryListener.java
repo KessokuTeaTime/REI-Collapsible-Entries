@@ -12,6 +12,7 @@ import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.lit
 public class ClientCommandRegistryListener implements ClientCommandRegistrationCallback {
     @Override
     public void register(CommandDispatcher<FabricClientCommandSource> dispatcher, CommandRegistryAccess registryAccess) {
-        dispatcher.register(literal(REICollapsibleEntries.ID).then(literal("tags").executes(new HeldItemTagsCommand())));
+        dispatcher.register(literal(REICollapsibleEntries.ID)
+                .then(literal("tags").executes(new HeldItemTagsCommand())));
     }
 }
