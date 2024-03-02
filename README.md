@@ -2,7 +2,7 @@
 
 # The *Roughly Enough Items* Collapsible Entries *Quality of Life* Mod
 
-You want it, don't you? **REI Collapsible Entries QOL** adds some default quality-of-life collapsible entries for you, which could significantly improve your game experience with **REI.**
+You want it, don't you? **REI Collapsible Entries QOL** adds some default quality-of-life collapsible entries for you, which could significantly improve your game experience with **[Roughly Enough Items.](https://modrinth.com/mod/rei)**
 
 ## Supported Entries
 
