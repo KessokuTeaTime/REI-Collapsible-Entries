@@ -6,46 +6,99 @@ You want it, don't you? **REI Collapsible Entries QOL** adds some default qualit
 
 ## Supported Entries
 
-### Tagged
+### Custom Tags
 
-- [X] `#c:shulker_boxes`
-- [X] `#c:ores` 
-- [X] `#c:dyes` 
-- [X] `#c:glass_blocks`
-- [X] `#c:glass_panes`
+You can configure custom tags to appear as entries in `/config/reicpllapsibleentries.toml`.
+
+```toml
+# A possible config structure
+customTags = [
+    "namespace:tag_path"
+]
+```
+
+> [!NOTE]
+> Via [ModMenu,](https://modrinth.com/mod/modmenu) you can also configure the tags with an in-game GUI.
+
+> [!NOTE]
+> You can query an item's tag through command `/reicollapsibleentries tags` while holding the item. By clicking on the results (if any), you can also toggle the tag directly in a quick config screen.
+
+### Tags
+
+<details>
+  <summary><code>c</code></summary>
+  <code>#c:shulker_boxes</code>
+  <code>#c:ores</code>
+  <code>#c:dyes</code>
+  <code>#c:glass_blocks</code>
+  <code>#c:glass_panes</code>
+</details>
+
+<details>
+  <summary><code>minecraft</code></summary>
+  <code>#minecraft:carpets</code>
+  <code>#minecraft:beds</code>
+  <code>#minecraft:banners</code>
+  <code>#minecraft:candles</code>
+  <code>#minecraft:music_discs</code>
+  <code>#minecraft:leaves</code>
+  <code>#minecraft:signs</code>
+  <code>#minecraft:hanging_signs</code>
+  <code>#minecraft:logs</code>
+  <code>#minecraft:planks</code>
+  <code>#minecraft:stairs</code>
+  <code>#minecraft:slabs</code>
+  <code>#minecraft:doors</code>
+  <code>#minecraft:trapdoors</code>
+  <code>#minecraft:fence_gates</code>
+  <code>#minecraft:boats</code>
+  <code>#minecraft:walls</code>
+  <code>#minecraft:fences</code>
+  <code>#minecraft:trim_templates</code>
+  <code>#minecraft:decorated_pot_sherds</code>
+  <code>#minecraft:swords</code>
+  <code>#minecraft:shovels</code>
+  <code>#minecraft:pickaxes</code>
+  <code>#minecraft:axes</code>
+  <code>#minecraft:hoes</code>
+  <code>#minecraft:small_flowers</code>
+  <code>#minecraft:tall_flowers</code>
+  <code>#minecraft:rails</code>
+  <code>#minecraft:saplings</code>
+</details>
 
 ### Vanilla
 
-- [X] Fluids
-- [X] Spawn eggs
-- [X] Banners, banner patterns, etc.
-- [X] Tools and armors (sorting by both material and type)
-- [X] Copper block variations
-- [X] Enchanted books
-- [X] Arrows
-- [X] Paintings
-- [X] Suspicious stews, potions, etc.
-- [X] Horse armors
-- [X] Terracotta, glazed terracotta, concretes, concrete powders, etc.
-- [X] Beds, wools, carpets, etc.
-- [X] Corals, coral fans, coral blocks and dead ones
-- [X] Skulls and heads
-- [X] Buttons, pressure plates, etc.
-- [X] Saplings
+- Fluids
+- Spawn eggs
+- Banners, banner patterns, etc.
+- Tools and armors (sorted by both material and type)
+- Copper block variations
+- Enchanted books
+- Arrows
+- Paintings
+- Suspicious stews, potions, etc.
+- Horse armors
+- Terracotta, glazed terracotta, concretes, concrete powders, etc.
+- Beds, wools, carpets, etc.
+- Corals, coral fans, coral blocks and dead ones
+- Skulls and heads
+- Buttons, pressure plates, etc.
+- Saplings
 
-### Modded
+### Mods
 
-- [X] [Ad Astra](https://modrinth.com/mod/ad-astra)
-- [X] [Applied Energetics 2](https://modrinth.com/mod/ae2)
-- [X] [Catwalks LLC.](https://modrinth.com/mod/catwalks-llc)
-- [X] [CC: Tweaked (ComputerCraft)](https://modrinth.com/mod/cc-tweaked)
-- [X] [Create](https://modrinth.com/mod/create-fabric)
-- [X] [Farmer's Delight](https://modrinth.com/mod/farmers-delight-fabric)
-- [X] [Hephaestus (Tinkers' Construct)](https://modrinth.com/mod/hephaestus)
-- [X] [Industrial Revolution](https://www.curseforge.com/minecraft/mc-mods/industrial-revolution)
-- [X] [Item Filters](https://www.curseforge.com/minecraft/mc-mods/item-filters)
-- [X] [Kibe](https://modrinth.com/mod/kibe)
-- [X] [Promenade](https://modrinth.com/mod/promenade)
+- [Ad Astra](https://modrinth.com/mod/ad-astra)
+- [Applied Energetics 2](https://modrinth.com/mod/ae2)
+- [Catwalks LLC.](https://modrinth.com/mod/catwalks-llc)
+- [CC: Tweaked (ComputerCraft)](https://modrinth.com/mod/cc-tweaked)
+- [Create](https://modrinth.com/mod/create-fabric)
+- [Farmer's Delight](https://modrinth.com/mod/farmers-delight-fabric)
+- [Hephaestus (Tinkers' Construct)](https://modrinth.com/mod/hephaestus)
+- [Industrial Revolution](https://www.curseforge.com/minecraft/mc-mods/industrial-revolution)
+- [Item Filters](https://www.curseforge.com/minecraft/mc-mods/item-filters)
+- [Kibe](https://modrinth.com/mod/kibe)
+- [Promenade](https://modrinth.com/mod/promenade)
 
 ## License
 
