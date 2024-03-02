@@ -77,25 +77,23 @@ customTags = [
   <summary><code>create</code></summary>
   <code>#create:toolboxes</code>
   <code>#create:seats</code>
-  <blockquote>
-    <details>
-      <summary><code>create:stonetypes</code></summary>
-      <code>#create:stone_types/veridium</code>
-      <code>#create:stone_types/scorchia</code>
-      <code>#create:stone_types/scoria</code>
-      <code>#create:stone_types/ochrum</code>
-      <code>#create:stone_types/limestone</code>
-      <code>#create:stone_types/crimsite</code>
-      <code>#create:stone_types/asurine</code>
-      <code>#create:stone_types/tuff</code>
-      <code>#create:stone_types/deepslate</code>
-      <code>#create:stone_types/dripstone</code>
-      <code>#create:stone_types/calcite</code>
-      <code>#create:stone_types/andesite</code>
-      <code>#create:stone_types/diorite</code>
-      <code>#create:stone_types/granite</code>
-    </details>
-  </blockquote>
+  <details>
+    <summary><code>create:stonetypes</code></summary>
+    <code>#create:stone_types/veridium</code>
+    <code>#create:stone_types/scorchia</code>
+    <code>#create:stone_types/scoria</code>
+    <code>#create:stone_types/ochrum</code>
+    <code>#create:stone_types/limestone</code>
+    <code>#create:stone_types/crimsite</code>
+    <code>#create:stone_types/asurine</code>
+    <code>#create:stone_types/tuff</code>
+    <code>#create:stone_types/deepslate</code>
+    <code>#create:stone_types/dripstone</code>
+    <code>#create:stone_types/calcite</code>
+    <code>#create:stone_types/andesite</code>
+    <code>#create:stone_types/diorite</code>
+    <code>#create:stone_types/granite</code>
+  </details>
 </details>
 
 <details>
@@ -105,16 +103,14 @@ customTags = [
 
 <details>
   <summary><code>tconstruct</code></summary>
-      <code>#tconstruct:foundry</code>
-      <code>#tconstruct:smeltery</code>
-  <blockquote>
-    <details>
-      <summary><code>tconstruct:casts</code></summary>
-      <code>#tconstruct:casts/red_sand</code>
-      <code>#tconstruct:casts/sand</code>
-      <code>#tconstruct:casts/gold</code>
-    </details>
-  </blockquote>
+  <code>#tconstruct:foundry</code>
+  <code>#tconstruct:smeltery</code>
+  <details>
+    <summary><code>tconstruct:casts</code></summary>
+    <code>#tconstruct:casts/red_sand</code>
+    <code>#tconstruct:casts/sand</code>
+    <code>#tconstruct:casts/gold</code>
+  </details>
 </details>
 
 <details>
