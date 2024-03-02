@@ -9,7 +9,9 @@
 
   "comment_tag": "标签",
 
-  "tagged.none": "§7空标签",
+  "tagged.only": "%s§7有以下标签：",
+  "tagged.more": "%s§7有以下标签：",
+  "tagged.none": "%s§7没有标签",
 
   "tagged.c.shulker_boxes": "潜影盒",
   "tagged.c.ores"         : "矿物",
@@ -48,6 +50,9 @@
   "tagged.minecraft.saplings"            : "树苗",
 
   "tagged.catwalksinc.filled_paint_rolls": "§6油漆滚筒",
+
+  "tagged.create.toolboxes": "工具箱",
+  "tagged.create.seats"    : "座垫",
 
   "tagged.create.stone_types/veridium" : "辉绿岩系",
   "tagged.create.stone_types/scorchia" : "焦黑熔渣岩系",

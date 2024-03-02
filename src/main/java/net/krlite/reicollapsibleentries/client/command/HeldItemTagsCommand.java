@@ -20,12 +20,17 @@ public class HeldItemTagsCommand implements Command<FabricClientCommandSource> {
 		ItemStack stack = context.getSource().getPlayer().getMainHandStack();
 		Identifier itemId = Registries.ITEM.getId(stack.getItem());
 
-		if (stack.isOf(Items.AIR))
-			return 0;
+		if (stack.isOf(Items.AIR)) return 0;
+		long size = stack.getItem().getRegistryEntry().streamTags().count();
 
-		if (stack.getItem().getRegistryEntry().streamTags().findAny().isPresent()) {
+		context.getSource().sendFeedback(Text.translatable(
+				size == 0 ? "tagged.none" : size == 1 ? "tagged.only" : "tagged.more",
+				stack.toHoverableText()
+		));
+
+		if (size > 0) {
 			context.getSource().sendFeedback(streamTags(stack));
-		} else context.getSource().sendFeedback(Text.translatable("tagged.none"));
+		}
 
 		return SINGLE_SUCCESS;
 	}

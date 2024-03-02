@@ -7,7 +7,10 @@
   "comment_tag": "Tags",
 
   "tagged.#": "#",
-  "tagged.none": "§7Empty Tag",
+
+  "tagged.only": "%s §7has the following tag:",
+  "tagged.more": "%s §7has the following tags:",
+  "tagged.none": "%s §7has no tag",
 
   "tagged.c.shulker_boxes": "Shulker Boxes",
   "tagged.c.ores"         : "Ores",
@@ -46,6 +49,9 @@
   "tagged.minecraft.saplings"            : "Saplings",
 
   "tagged.catwalksinc.filled_paint_rolls": "§6Filled Paint Rollers",
+
+  "tagged.create.toolboxes": "Toolboxes",
+  "tagged.create.seats"    : "Seats",
 
   "tagged.create.stone_types/veridium" : "Veridiums",
   "tagged.create.stone_types/scorchia" : "Scorchias",
