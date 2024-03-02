@@ -77,6 +77,8 @@ customTags = [
   <summary><code>create</code></summary>
   <code>#create:toolboxes</code>
   <code>#create:seats</code>
+  <ul>
+    <li>
   <details>
     <summary><code>create:stonetypes</code></summary>
     <code>#create:stone_types/veridium</code>
@@ -94,6 +96,8 @@ customTags = [
     <code>#create:stone_types/diorite</code>
     <code>#create:stone_types/granite</code>
   </details>
+    </li>
+  </ul>
 </details>
 
 <details>
