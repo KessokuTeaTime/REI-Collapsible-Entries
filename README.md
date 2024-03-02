@@ -13,6 +13,7 @@ You can configure custom tags to appear as entries in `/config/reicpllapsibleent
 ```toml
 # A possible config structure
 customTags = [
+    "namespace:tag_path",
     "namespace:tag_path"
 ]
 ```
