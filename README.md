@@ -26,6 +26,8 @@ customTags = [
 
 ### Tags
 
+<ul>
+<li>
 <details>
   <summary><code>c</code></summary>
   <code>#c:shulker_boxes</code>
@@ -34,7 +36,9 @@ customTags = [
   <code>#c:glass_blocks</code>
   <code>#c:glass_panes</code>
 </details>
+</li>
 
+<li>
 <details>
   <summary><code>minecraft</code></summary>
   <code>#minecraft:carpets</code>
@@ -67,12 +71,16 @@ customTags = [
   <code>#minecraft:rails</code>
   <code>#minecraft:saplings</code>
 </details>
+</li>
 
+<li>
 <details>
   <summary><code>catwalksinc</code></summary>
   <code>#catwalksinc:filled_paint_rolls</code>
 </details>
+</li>
 
+<li>
 <details>
   <summary><code>create</code></summary>
   <code>#create:toolboxes</code>
@@ -99,12 +107,16 @@ customTags = [
     </li>
   </ul>
 </details>
+</li>
 
+<li>
 <details>
   <summary><code>farmersdelight</code></summary>
   <code>#farmersdelight:canvas_signs</code>
 </details>
+</li>
 
+<li>
 <details>
   <summary><code>tconstruct</code></summary>
   <code>#tconstruct:foundry</code>
@@ -116,11 +128,15 @@ customTags = [
     <code>#tconstruct:casts/gold</code>
   </details>
 </details>
+</li>
 
+<li>
 <details>
   <summary><code>itemfilters</code></summary>
   <code>#itemfilters:filters</code>
 </details>
+</li>
+</ul>
 
 ### Vanilla Item Types
 
