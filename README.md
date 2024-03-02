@@ -19,7 +19,7 @@ customTags = [
 ```
 
 > [!NOTE]
-> Via [ModMenu,](https://modrinth.com/mod/modmenu) you can also configure the tags with an in-game GUI.
+> Via **[Mod Menu,](https://modrinth.com/mod/modmenu)** you can also configure the tags with an in-game GUI.
 
 > [!NOTE]
 > You can query an item's tag through command `/reicollapsibleentries tags` while holding the item. By clicking on the results (if any), you can also toggle the tag directly in a quick config screen.
