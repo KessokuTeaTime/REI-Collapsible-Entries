@@ -26,49 +26,117 @@ customTags = [
 
 ### Tags
 
-<details>
-  <summary><code>c</code></summary>
-  <code>#c:shulker_boxes</code>
-  <code>#c:ores</code>
-  <code>#c:dyes</code>
-  <code>#c:glass_blocks</code>
-  <code>#c:glass_panes</code>
-</details>
+<blockquote>
+  <details>
+    <summary><code>c</code></summary>
+    <code>#c:shulker_boxes</code>
+    <code>#c:ores</code>
+    <code>#c:dyes</code>
+    <code>#c:glass_blocks</code>
+    <code>#c:glass_panes</code>
+  </details>
+</blockquote>
 
-<details>
-  <summary><code>minecraft</code></summary>
-  <code>#minecraft:carpets</code>
-  <code>#minecraft:beds</code>
-  <code>#minecraft:banners</code>
-  <code>#minecraft:candles</code>
-  <code>#minecraft:music_discs</code>
-  <code>#minecraft:leaves</code>
-  <code>#minecraft:signs</code>
-  <code>#minecraft:hanging_signs</code>
-  <code>#minecraft:logs</code>
-  <code>#minecraft:planks</code>
-  <code>#minecraft:stairs</code>
-  <code>#minecraft:slabs</code>
-  <code>#minecraft:doors</code>
-  <code>#minecraft:trapdoors</code>
-  <code>#minecraft:fence_gates</code>
-  <code>#minecraft:boats</code>
-  <code>#minecraft:walls</code>
-  <code>#minecraft:fences</code>
-  <code>#minecraft:trim_templates</code>
-  <code>#minecraft:decorated_pot_sherds</code>
-  <code>#minecraft:swords</code>
-  <code>#minecraft:shovels</code>
-  <code>#minecraft:pickaxes</code>
-  <code>#minecraft:axes</code>
-  <code>#minecraft:hoes</code>
-  <code>#minecraft:small_flowers</code>
-  <code>#minecraft:tall_flowers</code>
-  <code>#minecraft:rails</code>
-  <code>#minecraft:saplings</code>
-</details>
+<blockquote>
+  <details>
+    <summary><code>minecraft</code></summary>
+    <code>#minecraft:carpets</code>
+    <code>#minecraft:beds</code>
+    <code>#minecraft:banners</code>
+    <code>#minecraft:candles</code>
+    <code>#minecraft:music_discs</code>
+    <code>#minecraft:leaves</code>
+    <code>#minecraft:signs</code>
+    <code>#minecraft:hanging_signs</code>
+    <code>#minecraft:logs</code>
+    <code>#minecraft:planks</code>
+    <code>#minecraft:stairs</code>
+    <code>#minecraft:slabs</code>
+    <code>#minecraft:doors</code>
+    <code>#minecraft:trapdoors</code>
+    <code>#minecraft:fence_gates</code>
+    <code>#minecraft:boats</code>
+    <code>#minecraft:walls</code>
+    <code>#minecraft:fences</code>
+    <code>#minecraft:trim_templates</code>
+    <code>#minecraft:decorated_pot_sherds</code>
+    <code>#minecraft:swords</code>
+    <code>#minecraft:shovels</code>
+    <code>#minecraft:pickaxes</code>
+    <code>#minecraft:axes</code>
+    <code>#minecraft:hoes</code>
+    <code>#minecraft:small_flowers</code>
+    <code>#minecraft:tall_flowers</code>
+    <code>#minecraft:rails</code>
+    <code>#minecraft:saplings</code>
+  </details>
+</blockquote>
 
-### Vanilla
+<blockquote>
+  <details>
+    <summary><code>catwalksinc</code></summary>
+    <code>#catwalksinc:filled_paint_rolls</code>
+  </details>
+</blockquote>
+
+<blockquote>
+  <details>
+    <summary><code>create</code></summary>
+    <code>#create:toolboxes</code>
+    <code>#create:seats</code>
+    <blockquote>
+      <details>
+        <summary><code>create:stonetypes</code></summary>
+        <code>#create:stone_types/veridium</code>
+        <code>#create:stone_types/scorchia</code>
+        <code>#create:stone_types/scoria</code>
+        <code>#create:stone_types/ochrum</code>
+        <code>#create:stone_types/limestone</code>
+        <code>#create:stone_types/crimsite</code>
+        <code>#create:stone_types/asurine</code>
+        <code>#create:stone_types/tuff</code>
+        <code>#create:stone_types/deepslate</code>
+        <code>#create:stone_types/dripstone</code>
+        <code>#create:stone_types/calcite</code>
+        <code>#create:stone_types/andesite</code>
+        <code>#create:stone_types/diorite</code>
+        <code>#create:stone_types/granite</code>
+      </details>
+    </blockquote>
+  </details>
+</blockquote>
+
+<blockquote>
+  <details>
+    <summary><code>farmersdelight</code></summary>
+    <code>#farmersdelight:canvas_signs</code>
+  </details>
+</blockquote>
+
+<blockquote>
+  <details>
+    <summary><code>tconstruct</code></summary>
+        <code>#tconstruct:foundry</code>
+        <code>#tconstruct:smeltery</code>
+    <blockquote>
+      <details>
+        <summary><code>tconstruct:casts</code></summary>
+        <code>#tconstruct:casts/red_sand</code>
+        <code>#tconstruct:casts/sand</code>
+        <code>#tconstruct:casts/gold</code>
+      </details>
+    </blockquote>
+  </details>
+</blockquote>
+
+<blockquote>
+  <details>
+    <summary><code>itemfilters</code></summary>
+    <code>#itemfilters:filters</code>
+  </details>
+</blockquote>
+
+### Vanilla Item Types
 
 - Fluids
 - Spawn eggs
