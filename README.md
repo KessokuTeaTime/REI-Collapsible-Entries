@@ -86,7 +86,7 @@ customTags = [
   <code>#create:toolboxes</code>
   <code>#create:seats</code>
   <ul>
-    <li>
+  <li>
   <details>
     <summary><code>create:stonetypes</code></summary>
     <code>#create:stone_types/veridium</code>
@@ -104,7 +104,7 @@ customTags = [
     <code>#create:stone_types/diorite</code>
     <code>#create:stone_types/granite</code>
   </details>
-    </li>
+  </li>
   </ul>
 </details>
 </li>
@@ -121,12 +121,16 @@ customTags = [
   <summary><code>tconstruct</code></summary>
   <code>#tconstruct:foundry</code>
   <code>#tconstruct:smeltery</code>
+  <ul>
+  <li>
   <details>
     <summary><code>tconstruct:casts</code></summary>
     <code>#tconstruct:casts/red_sand</code>
     <code>#tconstruct:casts/sand</code>
     <code>#tconstruct:casts/gold</code>
   </details>
+  </li>
+  </ul>
 </details>
 </li>
 
