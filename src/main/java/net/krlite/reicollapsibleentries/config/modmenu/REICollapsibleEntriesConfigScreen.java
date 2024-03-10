@@ -14,7 +14,7 @@ public class REICollapsibleEntriesConfigScreen {
             .setTitle(Text.translatable("screen.reicollapsibleentries.config.title"))
             .transparentBackground()
             .setShouldListSmoothScroll(true)
-            .setSavingRunnable(REICollapsibleEntries.CONFIG_HOLDER::save);
+            .setSavingRunnable(REICollapsibleEntries.CONFIG::save);
     private final ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();
 
     public REICollapsibleEntriesConfigScreen(Screen parent) {
@@ -32,10 +32,10 @@ public class REICollapsibleEntriesConfigScreen {
 
         category.addEntry(entryBuilder.startStrList(
                                 Text.translatable("config.reicollapsibleentries.custom_tags"),
-                                REICollapsibleEntries.CONFIG.customTags
+                                REICollapsibleEntries.CONFIG.get().customTags
                         )
                         .setExpanded(true)
-                        .setSaveConsumer(value -> REICollapsibleEntries.CONFIG.customTags = new ArrayList<>(value))
+                        .setSaveConsumer(value -> REICollapsibleEntries.CONFIG.get().customTags = new ArrayList<>(value))
                         .build()
         );
     }

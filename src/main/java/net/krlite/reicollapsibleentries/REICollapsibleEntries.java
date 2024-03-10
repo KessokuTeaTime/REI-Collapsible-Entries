@@ -14,38 +14,33 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Optional;
 
 public class REICollapsibleEntries implements ClientModInitializer {
 	public static final String NAME = "REI Collapsible Entries QOL", ID = "reicollapsibleentries";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
-	public static final ConfigHolder<REICollapsibleEntriesConfig> CONFIG_HOLDER;
-	public static final REICollapsibleEntriesConfig CONFIG;
+	public static final ConfigHolder<REICollapsibleEntriesConfig> CONFIG;
 
 	static {
 		AutoConfig.register(REICollapsibleEntriesConfig.class, Toml4jConfigSerializer::new);
-		CONFIG_HOLDER = AutoConfig.getConfigHolder(REICollapsibleEntriesConfig.class);
-		CONFIG = CONFIG_HOLDER.get();
+		CONFIG = AutoConfig.getConfigHolder(REICollapsibleEntriesConfig.class);
 	}
 
 	@Override
 	public void onInitializeClient() {
 		ClientCommandRegistrationCallback.EVENT.register(new ClientCommandRegistryListener());
-		CONFIG_HOLDER.registerSaveListener((configHolder, config) -> {
+
+		CONFIG.registerSaveListener((configHolder, config) -> {
 			RoughlyEnoughItemsCore._reloadPlugins(null);
 			return ActionResult.PASS;
 		});
 	}
 
 	public static MutableText paintIdentifier(@NotNull Identifier identifier) {
-		return
-				Text.translatable("tagged.#").formatted(Formatting.GRAY)
-						.append(Text.literal(identifier.getNamespace()).formatted(Formatting.AQUA))
-						.append(Text.literal(":").formatted(Formatting.GRAY))
-						.append(Text.literal(identifier.getPath()).formatted(Formatting.YELLOW));
+		return Text.translatable("tagged.#").formatted(Formatting.GRAY)
+				.append(Text.literal(identifier.getNamespace()).formatted(Formatting.AQUA))
+				.append(Text.literal(":").formatted(Formatting.GRAY))
+				.append(Text.literal(identifier.getPath()).formatted(Formatting.YELLOW));
 	}
 }

@@ -23,6 +23,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
     @Override
     public void registerCollapsibleEntries(CollapsibleEntryRegistry registry) {
         REICollapsibleEntries.LOGGER.info("Registering quality-of-life collapsible entries for REI!");
+        REICollapsibleEntries.CONFIG.load();
 
         types:
         {
@@ -40,7 +41,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         tags:
         {
             // Custom tags
-            REICollapsibleEntries.CONFIG.customTags.forEach(tag ->
+            REICollapsibleEntries.CONFIG.get().customTags.forEach(tag ->
                     Optional.ofNullable(Identifier.tryParse(tag)).ifPresent(identifier -> {
                         TagKey<Item> tagKey = TagKey.of(Registries.ITEM.getKey(), identifier);
                         List<Item> items = Registries.ITEM.stream()
