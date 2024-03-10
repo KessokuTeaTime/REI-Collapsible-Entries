@@ -23,7 +23,7 @@ public class ConfirmTagScreen extends ConfirmScreen {
     }
 
     public static boolean exists(Identifier tag) {
-        return REICollapsibleEntries.CONFIG.customTags.contains(tag.toString());
+        return REICollapsibleEntries.CONFIG.get().customTags.contains(tag.toString());
     }
 
     public static void confirmTag(boolean notCopy) {
@@ -32,12 +32,12 @@ public class ConfirmTagScreen extends ConfirmScreen {
         String string = ConfirmTagScreen.tag.toString();
         if (notCopy) {
             if (exists(ConfirmTagScreen.tag)) {
-                REICollapsibleEntries.CONFIG.customTags.remove(string);
+                REICollapsibleEntries.CONFIG.get().customTags.remove(string);
             } else {
-                REICollapsibleEntries.CONFIG.customTags.add(string);
+                REICollapsibleEntries.CONFIG.get().customTags.add(string);
             }
 
-            REICollapsibleEntries.CONFIG_HOLDER.save();
+            REICollapsibleEntries.CONFIG.save();
         } else {
             MinecraftClient.getInstance().keyboard.setClipboard(string);
         }
