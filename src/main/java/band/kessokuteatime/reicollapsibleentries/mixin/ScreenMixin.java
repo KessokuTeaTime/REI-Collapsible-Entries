@@ -1,6 +1,6 @@
-package net.krlite.reicollapsibleentries.mixin;
+package band.kessokuteatime.reicollapsibleentries.mixin;
 
-import net.krlite.reicollapsibleentries.client.gui.screen.ConfirmTagScreen;
+import band.kessokuteatime.reicollapsibleentries.client.gui.screen.ConfirmTagScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.ClickEvent;

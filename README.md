@@ -1,4 +1,4 @@
-### <p align=right>[`→` Modrinth](https://modrinth.com/mod/rei-collapsible-entries)</p>
+### <p align=right>[`→` CurseForge](https://www.curseforge.com/minecraft/mc-mods/rei-collapsible-entries)&ensp;[`→` Modrinth](https://modrinth.com/mod/rei-collapsible-entries)</p>
 
 # The *Roughly Enough Items* Collapsible Entries *Quality of Life* Mod
 

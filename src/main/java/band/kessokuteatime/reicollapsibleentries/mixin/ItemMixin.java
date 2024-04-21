@@ -1,4 +1,4 @@
-package net.krlite.reicollapsibleentries.mixin;
+package band.kessokuteatime.reicollapsibleentries.mixin;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

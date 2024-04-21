@@ -1,4 +1,4 @@
-package net.krlite.reicollapsibleentries.config;
+package band.kessokuteatime.reicollapsibleentries.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;

@@ -1,10 +1,10 @@
-package net.krlite.reicollapsibleentries.client.listener;
+package band.kessokuteatime.reicollapsibleentries.client.listener;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.krlite.reicollapsibleentries.REICollapsibleEntries;
-import net.krlite.reicollapsibleentries.client.command.HeldItemTagsCommand;
+import band.kessokuteatime.reicollapsibleentries.REICollapsibleEntries;
+import band.kessokuteatime.reicollapsibleentries.client.command.HeldItemTagsCommand;
 import net.minecraft.command.CommandRegistryAccess;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal;

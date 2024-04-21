@@ -1,6 +1,6 @@
-package net.krlite.reicollapsibleentries.client.gui.screen;
+package band.kessokuteatime.reicollapsibleentries.client.gui.screen;
 
-import net.krlite.reicollapsibleentries.REICollapsibleEntries;
+import band.kessokuteatime.reicollapsibleentries.REICollapsibleEntries;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmLinkScreen;
 import net.minecraft.client.gui.screen.ConfirmScreen;

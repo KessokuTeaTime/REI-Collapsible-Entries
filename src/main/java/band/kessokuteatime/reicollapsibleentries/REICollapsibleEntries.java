@@ -1,4 +1,4 @@
-package net.krlite.reicollapsibleentries;
+package band.kessokuteatime.reicollapsibleentries;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
@@ -6,8 +6,8 @@ import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import me.shedaniel.rei.RoughlyEnoughItemsCore;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.krlite.reicollapsibleentries.client.listener.ClientCommandRegistryListener;
-import net.krlite.reicollapsibleentries.config.REICollapsibleEntriesConfig;
+import band.kessokuteatime.reicollapsibleentries.client.listener.ClientCommandRegistryListener;
+import band.kessokuteatime.reicollapsibleentries.config.REICollapsibleEntriesConfig;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;

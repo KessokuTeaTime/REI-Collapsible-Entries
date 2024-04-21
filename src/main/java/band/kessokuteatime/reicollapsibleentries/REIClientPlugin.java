@@ -1,10 +1,10 @@
-package net.krlite.reicollapsibleentries;
+package band.kessokuteatime.reicollapsibleentries;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.entry.type.EntryType;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
-import net.krlite.reicollapsibleentries.core.ModPredicate;
+import band.kessokuteatime.reicollapsibleentries.core.ModPredicate;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static net.krlite.reicollapsibleentries.core.ModEntry.*;
+import static band.kessokuteatime.reicollapsibleentries.core.ModEntry.*;
 
 @SuppressWarnings("UnstableApiUsage")
 public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIClientPlugin {

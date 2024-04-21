@@ -1,9 +1,9 @@
-package net.krlite.reicollapsibleentries.config.modmenu;
+package band.kessokuteatime.reicollapsibleentries.config.modmenu;
 
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.krlite.reicollapsibleentries.REICollapsibleEntries;
+import band.kessokuteatime.reicollapsibleentries.REICollapsibleEntries;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 

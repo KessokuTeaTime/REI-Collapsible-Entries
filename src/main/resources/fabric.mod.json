@@ -3,15 +3,16 @@
   "id": "reicollapsibleentries",
   "version": "${version}",
 
-  "name": "REI Collapsible Entries QOL",
+  "name": "${display.name}",
   "description": "Adds quality-of-life REI collapsible entries for items from Minecraft and various of mods!",
   "authors": [
+    "Kessoku Tea Time",
     "KrLite"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/rei-collapsible-entries",
-    "sources": "https://github.com/KrLite/Mod.REI-Collapsible-Entries-QOL",
-    "issues": "https://github.com/KrLite/Mod.REI-Collapsible-Entries-QOL/issues"
+    "sources": "https://github.com/KessokuTeaTime/REI-Collapsible-Entries-QOL",
+    "issues": "https://github.com/KessokuTeaTime/REI-Collapsible-Entries-QOL/issues"
   },
 
   "license": "GPL-3.0",
@@ -20,13 +21,13 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "net.krlite.reicollapsibleentries.REICollapsibleEntries"
+      "band.kessokuteatime.reicollapsibleentries.REICollapsibleEntries"
     ],
     "rei_client": [
-      "net.krlite.reicollapsibleentries.REIClientPlugin"
+      "band.kessokuteatime.reicollapsibleentries.REIClientPlugin"
     ],
     "modmenu": [
-      "net.krlite.reicollapsibleentries.config.modmenu.REICollapsibleEntriesModMenuIntegration"
+      "band.kessokuteatime.reicollapsibleentries.config.modmenu.REICollapsibleEntriesModMenuIntegration"
     ]
   },
   "mixins": [

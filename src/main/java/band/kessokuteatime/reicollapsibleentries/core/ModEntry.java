@@ -1,4 +1,4 @@
-package net.krlite.reicollapsibleentries.core;
+package band.kessokuteatime.reicollapsibleentries.core;
 
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
