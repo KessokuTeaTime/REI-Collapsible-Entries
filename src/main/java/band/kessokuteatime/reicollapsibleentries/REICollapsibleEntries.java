@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class REICollapsibleEntries implements ClientModInitializer {
-	public static final String NAME = "REI Collapsible Entries QOL", ID = "reicollapsibleentries";
+	public static final String NAME = "REI Collapsible Entries", ID = "reicollapsibleentries";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ID);
 	public static final ConfigHolder<REICollapsibleEntriesConfig> CONFIG;
 

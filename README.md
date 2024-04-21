@@ -2,7 +2,7 @@
 
 # The *Roughly Enough Items* Collapsible Entries *Quality of Life* Mod
 
-You want it, don't you? **REI Collapsible Entries QOL** adds some default quality-of-life collapsible entries for you, which could significantly improve your game experience with **[Roughly Enough Items.](https://modrinth.com/mod/rei)**
+You want it, don't you? **REI Collapsible Entries** adds some default quality-of-life collapsible entries for you, which could significantly improve your game experience with **[Roughly Enough Items.](https://modrinth.com/mod/rei)**
 
 ## Supported Entries
 
@@ -177,4 +177,4 @@ customTags = [
 
 ## License
 
-**REI Collapsible Entries QOL** is licensed under the **[GNU General Public License v3.](LICENSE)**
+**REI Collapsible Entries** is licensed under the **[GNU General Public License v3.](LICENSE)**

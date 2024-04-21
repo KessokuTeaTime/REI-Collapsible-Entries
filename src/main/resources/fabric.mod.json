@@ -11,8 +11,8 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/rei-collapsible-entries",
-    "sources": "https://github.com/KessokuTeaTime/REI-Collapsible-Entries-QOL",
-    "issues": "https://github.com/KessokuTeaTime/REI-Collapsible-Entries-QOL/issues"
+    "sources": "https://github.com/KessokuTeaTime/REI-Collapsible-Entries",
+    "issues": "https://github.com/KessokuTeaTime/REI-Collapsible-Entries/issues"
   },
 
   "license": "GPL-3.0",
