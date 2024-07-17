@@ -3,7 +3,7 @@
   "id": "reicollapsibleentries",
   "version": "${version}",
 
-  "name": "${display.name}",
+  "name": "${display.name.get()}",
   "description": "Adds quality-of-life REI collapsible entries for items from Minecraft and various of mods!",
   "authors": [
     "Kessoku Tea Time",
