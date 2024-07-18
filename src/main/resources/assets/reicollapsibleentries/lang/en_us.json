@@ -1,8 +1,5 @@
 {
-  "screen.reicollapsibleentries.config.title": "REI Collapsible Entries",
-
-  "config.reicollapsibleentries.custom_tags"        : "Custom Tags",
-  "config.reicollapsibleentries.custom_tags.invalid": "Invalid tag!",
+  "screen.reicollapsibleentries.config/title": "REI Collapsible Entries",
 
   "comment_tag": "Tags",
 
