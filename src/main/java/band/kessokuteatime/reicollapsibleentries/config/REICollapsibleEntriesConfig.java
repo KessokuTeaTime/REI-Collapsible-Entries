@@ -16,6 +16,6 @@ public class REICollapsibleEntriesConfig implements ConfigData {
     private transient final Supplier<ArrayList<String>> customTagsProvider = ArrayList::new;
 
     @SerdeDefault(provider = "customTagsProvider")
-    @SerdeComment("Define")
+    @SerdeComment("Define custom tags to create collapsible entries that gathers items with.")
     public ArrayList<String> customTags = customTagsProvider.get();
 }
