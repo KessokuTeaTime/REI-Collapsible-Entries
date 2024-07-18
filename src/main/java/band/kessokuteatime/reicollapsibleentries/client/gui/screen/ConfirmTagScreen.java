@@ -6,12 +6,13 @@ import net.minecraft.client.gui.screen.ConfirmLinkScreen;
 import net.minecraft.client.gui.screen.ConfirmScreen;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ConfirmTagScreen extends ConfirmScreen {
     private static @Nullable Identifier tag = null;
 
-    public ConfirmTagScreen(Identifier tag) {
+    public ConfirmTagScreen(@NotNull Identifier tag) {
         super(
                 ConfirmTagScreen::confirmTag,
                 Text.translatable("command.reicollapsibleentries.tags.title"),

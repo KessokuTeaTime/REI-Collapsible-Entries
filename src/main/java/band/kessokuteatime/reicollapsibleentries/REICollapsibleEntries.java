@@ -4,6 +4,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import me.shedaniel.rei.RoughlyEnoughItemsCore;
+import me.shedaniel.rei.RoughlyEnoughItemsCoreClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import band.kessokuteatime.reicollapsibleentries.client.listener.ClientCommandRegistryListener;
@@ -32,7 +33,7 @@ public class REICollapsibleEntries implements ClientModInitializer {
 		ClientCommandRegistrationCallback.EVENT.register(new ClientCommandRegistryListener());
 
 		CONFIG.registerSaveListener((configHolder, config) -> {
-			RoughlyEnoughItemsCore._reloadPlugins(null);
+			RoughlyEnoughItemsCoreClient.reloadPlugins(null, null);
 			return ActionResult.PASS;
 		});
 	}

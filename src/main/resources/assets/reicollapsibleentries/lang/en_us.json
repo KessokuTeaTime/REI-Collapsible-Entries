@@ -10,7 +10,7 @@
 
   "tagged.only": "%s §7has the following tag:",
   "tagged.more": "%s §7has the following tags:",
-  "tagged.none": "%s §7has no tag",
+  "tagged.none": "%s §7has no tags",
 
   "tagged.c.shulker_boxes": "Shulker Boxes",
   "tagged.c.ores"         : "Ores",

@@ -67,7 +67,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             C.buildTagged("glass_blocks")
                     .predicate(ModPredicate.tag(C.itemTag("glass_blocks"))
                             .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
-                                    .and(ModPredicate.mod(TC)
+                                    .and(ModPredicate.mod(TIC)
                                             .or(ModPredicate.mod(AE2)))
                                     .and(ModPredicate.pathTrailing("glass")))) // Special case for glass in TC & AE2
                     .register(registry);
@@ -76,7 +76,7 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
             C.buildTagged("glass_panes")
                     .predicate(ModPredicate.tag(C.itemTag("glass_panes"))
                             .or(ModPredicate.type(VanillaEntryTypes.FLUID).negate()
-                                    .and(ModPredicate.mod(TC))
+                                    .and(ModPredicate.mod(TIC))
                                     .and(ModPredicate.pathTrailing("glass_pane")))) // Special case for glass panes in TC
                     .register(registry);
         }
@@ -356,29 +356,29 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
         hephaestus:
         {
             // Modifiers
-            TC.buildCollection("modifiers")
-                    .predicate(ModPredicate.mod(TC)
-                            .and(ModPredicate.type(EntryType.deferred(TC.id("modifier_entry")))))
+            TIC.buildCollection("modifiers")
+                    .predicate(ModPredicate.mod(TIC)
+                            .and(ModPredicate.type(EntryType.deferred(TIC.id("modifier_entry")))))
                     .register(registry);
 
             // Slime helmets
-            TC.buildCollection("slime_helmets")
-                    .predicate(ModPredicate.id(TC.id("slime_helmet")))
+            TIC.buildCollection("slime_helmets")
+                    .predicate(ModPredicate.id(TIC.id("slime_helmet")))
                     .register(registry);
 
             // Modifier Crystals
-            TC.buildCollection("modifier_crystals")
-                    .predicate(ModPredicate.id(TC.id("modifier_crystal")))
+            TIC.buildCollection("modifier_crystals")
+                    .predicate(ModPredicate.id(TIC.id("modifier_crystal")))
                     .register(registry);
 
             // Platforms
-            TC.buildCollection("platforms")
-                    .predicate(ModPredicate.idTrailing(TC.id("platform")))
+            TIC.buildCollection("platforms")
+                    .predicate(ModPredicate.idTrailing(TIC.id("platform")))
                     .register(registry);
 
             // Casts
             Arrays.stream(new String[]{"red_sand", "sand", "gold"}).forEach(cast ->
-                    TC.registerCollapsibleEntryFromTag(registry, "casts", cast)
+                    TIC.registerCollapsibleEntryFromTag(registry, "casts", cast)
             );
 
             // Tools
@@ -387,8 +387,8 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "broad_axe", "hand_axe", "excavator", "pickadze",
                     "mattock", "vein_hammer", "sledge_hammer", "pickaxe",
                     "crossbow", "longbow"
-            }).forEach(tool -> TC.buildCollection("tools", tool)
-                    .predicate(ModPredicate.id(TC.id(tool)))
+            }).forEach(tool -> TIC.buildCollection("tools", tool)
+                    .predicate(ModPredicate.id(TIC.id(tool)))
                     .register(registry)
             );
 
@@ -399,55 +399,55 @@ public class REIClientPlugin implements me.shedaniel.rei.api.client.plugins.REIC
                     "small_blade", "broad_axe_head", "small_axe_head",
                     "hammer_head", "pick_head", "repair_kit",
                     "bow_limb", "bow_grip", "bowstring"
-            }).forEach(part -> TC.buildCollection("parts", part)
-                    .predicate(ModPredicate.id(TC.id(part)))
+            }).forEach(part -> TIC.buildCollection("parts", part)
+                    .predicate(ModPredicate.id(TIC.id(part)))
                     .register(registry)
             );
 
             // Anvils
-            TC.buildCollection("anvils")
-                    .predicate(ModPredicate.mod(TC)
+            TIC.buildCollection("anvils")
+                    .predicate(ModPredicate.mod(TIC)
                             .and(ModPredicate.path("scorched_anvil")
                                     .or(ModPredicate.path("tinkers_anvil"))))
                     .register(registry);
 
             // Stations
             Arrays.stream(new String[]{"part_builder", "tinker_station", "crafting_station"}).forEach(station ->
-                    TC.buildCollection("stations", station)
-                            .predicate(ModPredicate.id(TC.id(station)))
+                    TIC.buildCollection("stations", station)
+                            .predicate(ModPredicate.id(TIC.id(station)))
                             .register(registry)
             );
 
             // Foundries & Smelteries
             Arrays.stream(new String[]{"foundry", "smeltery"}).forEach(type ->
-                    TC.buildTagged("blocks", type)
-                            .predicate(ModPredicate.tag(TC.itemTag(type)))
+                    TIC.buildTagged("blocks", type)
+                            .predicate(ModPredicate.tag(TIC.itemTag(type)))
                             .register(registry)
             );
 
             // Buckets
             MC.buildCollection("buckets")
-                    .predicate(ModPredicate.mod(MC, TC, CREATE, INDREV, AD_ASTRA, KIBE)
+                    .predicate(ModPredicate.mod(MC, TIC, CREATE, INDREV, AD_ASTRA, KIBE)
                             .and(ModPredicate.pathTrailingOnly("bucket"))
                             .and(ModPredicate.pathTrailing("potion_bucket").negate()))
                     .register(registry);
 
             // Potion buckets
-            TC.buildCollection("buckets", "potion")
-                    .predicate(ModPredicate.id(TC.id("potion_bucket")))
+            TIC.buildCollection("buckets", "potion")
+                    .predicate(ModPredicate.id(TIC.id("potion_bucket")))
                     .register(registry);
 
             // Slime grasses
             Arrays.stream(new String[]{"ichor", "ender", "sky", "earth", "vanilla"}).forEach(type ->
-                    TC.buildCollection("slime_grasses", type)
-                            .predicate(ModPredicate.idTrailing(TC.id(type, "slime_grass")))
+                    TIC.buildCollection("slime_grasses", type)
+                            .predicate(ModPredicate.idTrailing(TIC.id(type, "slime_grass")))
                             .register(registry)
             );
 
             // Slime dirt & congealed slimes & slimes
             Arrays.stream(new String[]{"slime_dirt", "congealed_slime", "slime"}).forEach(suffix ->
-                    TC.buildCollection("blocks", suffix)
-                            .predicate(ModPredicate.idTrailing(TC.id(suffix)))
+                    TIC.buildCollection("blocks", suffix)
+                            .predicate(ModPredicate.idTrailing(TIC.id(suffix)))
             );
         }
 

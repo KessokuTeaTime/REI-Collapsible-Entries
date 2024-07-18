@@ -1,5 +1,6 @@
 package band.kessokuteatime.reicollapsibleentries.core;
 
+import band.kessokuteatime.reicollapsibleentries.REICollapsibleEntries;
 import me.shedaniel.rei.api.client.registry.entry.CollapsibleEntryRegistry;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import net.minecraft.item.Item;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public enum ModEntry {
+    THIS(REICollapsibleEntries.ID),
     C("c"),
     MC("minecraft"),
     AD_ASTRA("ad_astra"),
@@ -24,7 +26,7 @@ public enum ModEntry {
     CC("computercraft"),
     CREATE("create"),
     FARMERS_DELIGHT("farmersdelight"),
-    TC("tconstruct"),
+    TIC("tconstruct"),
     INDREV("indrev"),
     ITEM_FILTERS("itemfilters"),
     KIBE("kibe"),
@@ -68,6 +70,10 @@ public enum ModEntry {
         return contains(Registries.ITEM.getId(item));
     }
 
+    public Text name(String category, String... paths) {
+        return convertToTranslatableText(category, id(paths));
+    }
+
     /**
      * Gets a {@link Text} from the given {@link Identifier}, prefixed
      * with <code>"tag"</code>.
@@ -76,7 +82,7 @@ public enum ModEntry {
      * @return The tagged text.
      */
     public Text nameTagged(String... paths) {
-        return convertToTranslatableText("tagged", id(paths));
+        return name("tagged", paths);
     }
 
     /**
@@ -87,7 +93,7 @@ public enum ModEntry {
      * @return The coled text.
      */
     public Text nameCollection(String... paths) {
-        return convertToTranslatableText("collection", id(paths));
+        return name("collection", paths);
     }
 
     public ModPredicateBuilder build(Text name, String... paths) {
