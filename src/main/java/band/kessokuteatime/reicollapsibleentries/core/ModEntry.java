@@ -24,7 +24,7 @@ public enum ModEntry {
     CC("computercraft"),
     CREATE("create"),
     FARMERS_DELIGHT("farmersdelight"),
-    TC("tconstruct"),
+    TIC("tconstruct"),
     INDREV("indrev"),
     ITEM_FILTERS("itemfilters"),
     KIBE("kibe"),
@@ -41,7 +41,7 @@ public enum ModEntry {
     }
 
     public Identifier id(String... path) {
-        return new Identifier(modid(), String.join("/", path));
+        return Identifier.of(modid(), String.join("/", path));
     }
 
     public Item item(String... paths) {

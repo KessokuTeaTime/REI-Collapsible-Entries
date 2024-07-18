@@ -1,5 +1,6 @@
 package band.kessokuteatime.reicollapsibleentries;
 
+import band.kessokuteatime.nightautoconfig.config.base.ConfigType;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigHolder;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
@@ -23,7 +24,7 @@ public class REICollapsibleEntries implements ClientModInitializer {
 	public static final ConfigHolder<REICollapsibleEntriesConfig> CONFIG;
 
 	static {
-		AutoConfig.register(REICollapsibleEntriesConfig.class, Toml4jConfigSerializer::new);
+		AutoConfig.register(REICollapsibleEntriesConfig.class, ConfigType.DEFAULT_COMMENTED::fileWatcherSerializer);
 		CONFIG = AutoConfig.getConfigHolder(REICollapsibleEntriesConfig.class);
 	}
 
