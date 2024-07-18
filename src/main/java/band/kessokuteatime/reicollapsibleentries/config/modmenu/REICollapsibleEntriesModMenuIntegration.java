@@ -11,7 +11,7 @@ public class REICollapsibleEntriesModMenuIntegration implements ModMenuApi {
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parent -> {
             REICollapsibleEntries.CONFIG.load();
-            return new REICollapsibleEntriesConfigScreen(parent).build();
+            return AutoConfig.getConfigScreen(REICollapsibleEntriesConfig.class, parent).get();
         };
     }
 }

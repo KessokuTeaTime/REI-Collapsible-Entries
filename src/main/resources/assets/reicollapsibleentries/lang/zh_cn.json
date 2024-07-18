@@ -2,11 +2,9 @@
   "modmenu.nameTranslation.reicollapsibleentries"       : "REI折叠物品条目",
   "modmenu.descriptionTranslation.reicollapsibleentries": "向REI的物品搜索界面中添加了折叠条目，支持来自原版和许多模组的物品。",
 
-  "screen.reicollapsibleentries.config/title": "REI折叠物品条目",
+  "text.autoconfig.reicollapsibleentries.title": "REI折叠物品条目",
 
-  "config.reicollapsibleentries.text/delete" : "§c删除",
-  "config.reicollapsibleentries.text/restore": "§c恢复",
-  "config.reicollapsibleentries.text/inspect": "§e预览",
+  "text.autoconfig.reicollapsibleentries.option.customTags": "自定义标签",
 
   "comment_tag": "标签",
 
