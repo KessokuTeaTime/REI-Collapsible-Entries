@@ -28,9 +28,9 @@ dependencies {
 	mappings(libs.yarn)
 	modImplementation(libs.bundles.fabric)
 
-	modApi(libs.cloth.config)
 	modApi(libs.modmenu)
 	modApi(libs.rei)
+	modApi(libs.night.auto.config)
 }
 
 java {
@@ -81,15 +81,15 @@ publisher {
 
 	versionType.set("release")
 	projectVersion.set(project.version.toString())
-	gameVersions.set(listOf("1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4"))
+	gameVersions.set(listOf("1.21"))
 	loaders.set(listOf("fabric", "quilt"))
 	curseEnvironment.set("client")
 
-	modrinthDepends.required("fabric-api")
+	modrinthDepends.required("fabric-api", "night-auto-config")
 	modrinthDepends.optional()
 	modrinthDepends.embedded()
 
-	curseDepends.required("fabric-api")
+	curseDepends.required("fabric-api", "night-auto-config")
 	curseDepends.optional()
 	curseDepends.embedded()
 
