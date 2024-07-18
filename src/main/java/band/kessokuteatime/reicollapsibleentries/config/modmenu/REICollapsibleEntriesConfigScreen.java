@@ -1,5 +1,6 @@
 package band.kessokuteatime.reicollapsibleentries.config.modmenu;
 
+import band.kessokuteatime.reicollapsibleentries.config.modmenu.widgets.TagFieldBuilder;
 import band.kessokuteatime.reicollapsibleentries.core.ModEntry;
 import me.shedaniel.clothconfig2.api.AbstractConfigListEntry;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -20,20 +21,17 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class REICollapsibleEntriesConfigScreen {
+    private ArrayList<String> cachedTags = new ArrayList<>();
+
     private final ConfigBuilder configBuilder = ConfigBuilder.create()
             .setTitle(ModEntry.THIS.name("screen", "config", "title"))
             .transparentBackground()
             .setShouldListSmoothScroll(true)
-            .setSavingRunnable(() -> {
-                System.out.println(REICollapsibleEntries.CONFIG.get().customTags);
-                REICollapsibleEntries.CONFIG.save();
-                System.out.println(REICollapsibleEntries.CONFIG.get().customTags);
-            });
+            .setSavingRunnable(REICollapsibleEntries.CONFIG::save);
     private final ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();
 
     public REICollapsibleEntriesConfigScreen(Screen parent) {
         configBuilder.setParentScreen(parent);
-        REICollapsibleEntries.CONFIG.load();
 
         initEntries();
     }
@@ -43,14 +41,17 @@ public class REICollapsibleEntriesConfigScreen {
     }
 
     private void initEntries() {
+        REICollapsibleEntries.CONFIG.load();
+        cachedTags = REICollapsibleEntries.CONFIG.get().customTags;
+
         ConfigCategory category = configBuilder.getOrCreateCategory(Text.empty());
 
-        REICollapsibleEntries.CONFIG.get().customTags.forEach(tag -> {
+        cachedTags.stream().sorted().forEach(tag -> {
             category.addEntry(listEntry(tag).build());
         });
     }
 
-    private AbstractFieldBuilder<String, StringListEntry, StringFieldBuilder> listEntry(String value) {
+    private TagFieldBuilder listEntry(String value) {
         MutableText tag;
         @Nullable Identifier id = Identifier.tryParse(value);
 
@@ -62,13 +63,28 @@ public class REICollapsibleEntriesConfigScreen {
             tag = REICollapsibleEntries.paintIdentifier(id);
         }
 
-        return entryBuilder.startStrField(tag, value)
+        return new TagFieldBuilder(tag, value)
                 .setErrorSupplier(string -> {
+                    @Nullable Identifier newId = Identifier.tryParse(value);
+                    if (newId == null) {
+                        return Optional.of(ModEntry.THIS.name("screen", "config", "invalid_tag"));
+                    }
                     return Optional.empty();
                 })
+                .setDeleteConsumer(REICollapsibleEntries.CONFIG.get().customTags::remove)
+                .setRestoreConsumer(string -> {
+                    REICollapsibleEntries.CONFIG.get().customTags.add(string);
+                    System.out.println(REICollapsibleEntries.CONFIG.get().customTags);
+                })
+                .setInspectConsumer(string -> {
+
+                })
+                .setActiveSupplier(REICollapsibleEntries.CONFIG.get().customTags::contains)
                 .setSaveConsumer(newValue -> {
                     REICollapsibleEntries.CONFIG.get().customTags.remove(value);
-                    REICollapsibleEntries.CONFIG.get().customTags.add(newValue);
+                    if (!value.isEmpty()) {
+                        REICollapsibleEntries.CONFIG.get().customTags.add(newValue);
+                    }
                 });
     }
 }

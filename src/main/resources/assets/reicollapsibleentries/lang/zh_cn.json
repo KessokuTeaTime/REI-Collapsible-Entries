@@ -4,6 +4,10 @@
 
   "screen.reicollapsibleentries.config/title": "REI折叠物品条目",
 
+  "config.reicollapsibleentries.text/delete" : "§c删除",
+  "config.reicollapsibleentries.text/restore": "§c恢复",
+  "config.reicollapsibleentries.text/inspect": "§e预览",
+
   "comment_tag": "标签",
 
   "tagged.only": "%s§7有以下标签：",

@@ -1,6 +1,10 @@
 {
   "screen.reicollapsibleentries.config/title": "REI Collapsible Entries",
 
+  "config.reicollapsibleentries.text/delete" : "§cDelete",
+  "config.reicollapsibleentries.text/restore": "§cRestore",
+  "config.reicollapsibleentries.text/inspect": "§eInspect",
+
   "comment_tag": "Tags",
 
   "tagged.#": "#",
