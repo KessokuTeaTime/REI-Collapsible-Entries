@@ -39,8 +39,8 @@
     "fabricloader": "*",
     "fabric-api": "*",
     "minecraft": "1.20.x",
-    "cloth-config": "*",
-    "roughlyenoughitems": "*"
+    "roughlyenoughitems": "*",
+    "nightautoconfig": "*"
   },
   "suggests": {
   }
